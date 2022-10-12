@@ -148,14 +148,15 @@ h6,
 /*** Navbar ***/
 .navbar-light .navbar-nav .nav-link {
     position: relative;
-    margin-right: 25px;
-    padding: 45px 0;
+    margin-right: 50px;
+    padding: 40px 0;
     font-family: 'Jost', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     color: var(--light) !important;
     outline: none;
     transition: .5s;
+    text-shadow: 4px 4px 4px gray;
 }
 
 .navbar-light .navbar-nav .nav-link::before {
@@ -262,15 +263,13 @@ h6,
 .hero-header {
     margin-bottom: 6rem;
     padding: 16rem 0 0 0;
-    background-color: #F0F6FF;
+    height: 1000px;
+    /* filter: brightness(70%); */
     background:
-
         url(../img/bg-circle.png),
         url(../img/bg-triangle.png),
-        
         /* url(../img/3bg-bottom.png), */
         linear-gradient(to bottom right, var(--primary), var(--secondary));
-       
     background-position:
         left 0px top 0px,
         right 0px top 50%,
@@ -505,4 +504,8 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+.test{
+    background-image: url("../img/gg.jpg");
 }
