@@ -177,11 +177,12 @@
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-calendar"></i> Day_Graph
+                                        <i class="ti-calendar"></i> Day
                                         <!-- <form action="/perday"> -->
                                             <input type="date" name = "day" id="input_date" >
                                             <span class="validity"></span>
-                                            <button class='perday'><input type="submit" onclick="daygraph()"></button>
+                                            <button class='perday'><input type="submit" onclick="daygraph()"></button><br>
+                                            <h4></h4>
                                             
                                         <!-- </form> -->
                                     </div>
@@ -209,7 +210,13 @@
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-calendar"></i> Week_Graph
+                                        <i class="ti-calendar"></i> Week
+                                        <input type="date" name = "week1" id="input_dateW1">
+                                        <span class="validity"></span>
+                                        <input type="date" name = "week2" id="input_dateW2">
+                                        <span class="validity"></span>
+                                        <button class='perweek'><input type="submit" onclick="weekgraph()"></button>
+
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +241,10 @@
                                 <div class="footer">
                                     <hr />
                                     <div class="stats">
-                                        <i class="ti-calendar"></i> Month_Graph
+                                        <i class="ti-calendar"></i> Month
+                                        <input type="date" name = "month" id="input_dateM">
+                                        <span class="validity"></span>
+                                        <button class='permonth'><input type="submit" onclick="monthgraph()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -272,14 +282,14 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 id="graphText" class="title">일간 그래프</h4>
+                                <h4 id="graphText" class="title">통계 그래프</h4>
                                 
                             </div>
                             <div class="content">
                                 <!-- 새로운 그래프가 담겨질 곳, 그래프 크기 -->
-                                <div style="width: 55%; height: 55%;" align-center>
+                                <div style="width: 55%; height: 55%;" margin:0 auto; >
                                     <!--차트가 그려질 컨버스-->
-                                    <iframe src="http://127.0.0.1:3000/perday?day=2022-10-11" frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
+                                    <iframe src="" frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
                                 </div>
 
                                 <hr>
@@ -403,14 +413,31 @@
 
         ifr.src = graph
         let graphText = document.querySelector('#graphText')
-        graphText
+        graphText.innerText="일간 그래프"
 
 
         }
 
         function weekgraph(){
+            const wday1 = document.querySelector("#input_dateW1").value;
+            const wday2 = document.querySelector("#input_dateW2").value;
+        let day1 = wday1;
+        let day2 = wday2;
+        let graph = "http://127.0.0.1:3000/perweek?day1="+day1+"&day2="+day2        
 
+        let ifr = document.querySelector('iframe')
+
+        let graphText = document.querySelector('#graphText')
+        graphText.innerText="주간 그래프"
         }
+
+        function monthgraph(){
+            const mday1 = document.querySelector("#input_dateM").value;
+            let mday = mday1.substring(0,6)
+            let graph = "http://127.0.0.1:3000/permonth?month="+mday;
+        }
+
+
 
     </script>
 
