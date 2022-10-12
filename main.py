@@ -34,11 +34,16 @@ def logincheck():
 def logout():
     session.pop('user_id',None)
     return redirect(url_for('mainpage'))
+    
 
 
 @app.route('/join',methods=['POST','GET'])
 def join(): 
     return render_template('join.html')
+
+@app.route('/e404',methods=['POST','GET'])
+def e404(): 
+    return render_template('404.html')
 
 @app.route('/dashboard',methods=['POST','GET'])
 def dashboard(): 
