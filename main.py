@@ -40,6 +40,10 @@ def logout():
 def join(): 
     return render_template('join.html')
 
+@app.route('/dashboard',methods=['POST','GET'])
+def dashboard(): 
+    return render_template('dashboard.html')
+
 
 
 @app.route('/result',methods=['POST','GET'])
