@@ -118,24 +118,50 @@ def perday(whichday):
 
 
 
-def permonth(whichmonth,ani):
+# def permonth(whichmonth):
+# # def permonth(whichmonth, ani):
+#     conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+#     date =whichmonth
+#     # ani_type=ani
+#     with conn.cursor() as cursor:
+#         # cur_ora.execute("select * from N_ANI")
+#         # cursor.execute(f"select * from ANI where ANI_DATE like '{date}%' and ani_type='{ani_type}' order by ANI_DATE")
+#         cursor.execute(f"select * from ANI where ANI_DATE like '{date}%' order by ANI_DATE")
+#         list = cursor.fetchall()
+#         cursor.execute("select column_name from user_tab_columns where table_name = 'ANI'")
+#         col=[]
+#         colall= cursor.fetchall()
+#         for i in colall:
+#             for j in i:
+#                 col.append(i[0])
+                
+#         df=pd.DataFrame(list)
+#         df.columns=col
+#     return df
+
+def permonth(whichmonth):
     conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
     date =whichmonth
-    ani_type=ani
+    # ani_type=ani
     with conn.cursor() as cursor:
         # cur_ora.execute("select * from N_ANI")
-        cursor.execute(f"select * from ANI where ANI_DATE like '{date}%' and ani_type='{ani_type}' order by ANI_DATE")
+        cursor.execute(f"select * from ANI where ANI_DATE like '{date}%' order by ANI_DATE")
         list = cursor.fetchall()
-        cursor.execute("select column_name from user_tab_columns where table_name = 'ANI'")
-        col=[]
-        colall= cursor.fetchall()
-        for i in colall:
-            for j in i:
-                col.append(i[0])
-                
-        df=pd.DataFrame(list)
-        df.columns=col
-    return df
+        if not list:
+            print('====================================================================')
+            print('데이터가 없습니다')
+            print('====================================================================')
+            return -1
+        else:
+            cursor.execute("select column_name from user_tab_columns where table_name = 'ANI'")
+            col=[]
+            colall= cursor.fetchall()
+            for i in colall:
+                for j in i:
+                    col.append(i[0])
+            df=pd.DataFrame(list)
+            df.columns=col
+            return df
 
 
 def during(whatday1,whatday2,ani):
@@ -146,17 +172,20 @@ def during(whatday1,whatday2,ani):
     with conn.cursor() as cursor:
         cursor.execute(f"select * from ani where ani_date between '{start}' and '{finish}%'  and ani_type='{ani_type}' order by ANI_DATE ")
         duringlist = cursor.fetchall()
-        # print(duringlist)
-        cursor.execute("select column_name from user_tab_columns where table_name = 'ANI'")
-        col=[]
-        colall= cursor.fetchall()
-        for i in colall:
-            for j in i:
-                col.append(i[0])
-                
-        df=pd.DataFrame(duringlist)
-        df.columns=col
-        return df
+        if not duringlist:
+            print('====================================================================')
+            print('데이터가 없습니다')
+            print('====================================================================')
+            return -1
+        else:# print(duringlist)
+            cursor.execute("select column_name from user_tab_columns where table_name = 'ANI'")
+            col=[]
+            colall= cursor.fetchall()
+            for i in colall:
+                for j in i:
+                    col.append(i[0])
+            df=pd.DataFrame(duringlist)
+            df.columns=col
 
 
 def frommark(mark,day):

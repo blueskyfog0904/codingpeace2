@@ -186,8 +186,9 @@ def perday2():
 def permonth():
     if request.method == 'GET':
         par =request.args.get('month')
-        ani= request.args.get('ani')
-        df = dbyolo.permonth(par,ani)
+        # ani= request.args.get('ani')
+        df = dbyolo.permonth(par)
+        # df = dbyolo.permonth(par,ani)
         timeline=[]
         
         if int(par[5:7]) in [1,3,5,7,8,10,12]:

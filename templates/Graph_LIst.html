@@ -181,7 +181,7 @@
                                         <!-- <form action="/perday"> -->
                                             <input type="date" name = "day" id="input_date" >
                                             <span class="validity"></span>
-                                            <button class='perday'><input type="submit" onclick="input()"></button>
+                                            <button class='perday'><input type="submit" onclick="daygraph()"></button>
                                             
                                         <!-- </form> -->
                                     </div>
@@ -272,8 +272,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">일간</h4>
-                                <p class="category">Day_Graph</p>
+                                <h4 id="graphText" class="title">일간 그래프</h4>
+                                
                             </div>
                             <div class="content">
                                 <!-- 새로운 그래프가 담겨질 곳, 그래프 크기 -->
@@ -394,7 +394,7 @@
 </body>
 
     <script>
-        function input(){
+        function daygraph(){
             const dday= document.querySelector("#input_date").value;
         let perday = dday;
         let graph = "http://127.0.0.1:3000/perday?day="+perday
@@ -402,6 +402,10 @@
         let ifr = document.querySelector('iframe')
 
         ifr.src = graph
+
+        }
+
+        function weekgraph(){
 
         }
 
