@@ -41,6 +41,10 @@ gif 사각 라운드로 바꿈 */
         height: 480px !important;
         border-radius: 10px;
     }
+    #dd{
+        color: #fff;
+        text-shadow: 4px 4px 4px gray;
+    }
  </style>
 </head>
 
@@ -69,14 +73,14 @@ gif 사각 라운드로 바꿈 */
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Main</a>
-                        <a href="/dashboard" class="nav-item nav-link">Dashboard</a>
-                        <a href="/Record_Check" class="nav-item nav-link">Record Check</a>
-                        <a href="/Graph_LIst" class="nav-item nav-link">Graph  List</a>
+                        <a href="/" class="nav-item nav-link active">메인</a>
+                        <a href="/dashboard" class="nav-item nav-link">화면</a>
+                        <a href="/Record_Check" class="nav-item nav-link">그래프</a>
+                        <a href="/Graph_LIst" class="nav-item nav-link">그래프 목록</a>
                         <!-- <a href="#feature" class="nav-item nav-link">Record Chech</a> -->
                         <!-- <a href="#pricing" class="nav-item nav-link"></a> -->
                         <!-- <a href="#review" class="nav-item nav-link">Review</a> -->
-                        <a href="#contact" class="nav-item nav-link">Inquiry</a>
+                        <a href="#contact" class="nav-item nav-link">문의</a>
                     </div>
                     <!-- 기존의 Start Free Trial 버튼 log out 버튼으로 바뀜-->
                     {% if session['user_id']%}
@@ -88,15 +92,16 @@ gif 사각 라운드로 바꿈 */
                 </div>
             </nav>
 
-            <div class="container-xxl bg-primary hero-header">
+            <div class="test container-xxl bg-primary hero-header" style="background-size:100%">
                 <!-- test.mp4 -> home.mp4로 파일 이름 변경-->
                 <!-- <source src="img/home.mp4" type="video/mp4"> -->
                 <!-- <source src="img/bg-triangle.jpg"> -->
                 <!-- <img src = "img/bg-triangle.jpg" style="width: 50%;"> -->
                 <div class="container px-lg-5">
                     <div class="row g-5">
-                        <div class="col-lg-8 text-center text-lg-start">
-                            <h1 class="text-white mb-4 animated slideInDown">YOLO5를 활용한 동물인식 기반<br>지능형 야생동물 퇴치기 제어시스템</h1>
+                        <div class="col-lg-8 text-center text-lg-start"  >
+                            <!-- <h1 class="text-white mb-4 animated slideInDown">YOLO5를 활용한 동물인식 기반<br>지능형 야생동물 퇴치기 제어시스템</h1> -->
+                            <h1 class="text-white mb-4 animated slideInDown" id="dd">YOLO5를 활용한 동물인식 기반<br>지능형 야생동물 퇴치기 제어시스템</h1>
                             <!-- <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p> -->
                             <a href="./join" class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInLeft">
                                 Sign Up</a>
@@ -367,7 +372,7 @@ gif 사각 라운드로 바꿈 */
         
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+        <!-- <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-3">
@@ -407,15 +412,15 @@ gif 사각 라운드로 바꿈 */
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="container px-lg-5">
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.  
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                            Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                             </br>
                             Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
