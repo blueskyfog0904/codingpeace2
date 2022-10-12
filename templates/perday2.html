@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<a href="/">메인으로가기</a>
+    <div id="container"></div>
+    <button onclick="graphShow()">그래프출력</button>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+        function graphShow() {
+            $.ajax({
+                url: "http://127.0.0.1:5000/perday2", 		// 통신할url
+                method: "GET",			// 통신할 메서드 타입
+                data: { day: '2022.10.11', ani: "wBoar" },		//전송할 데이터
+                dataType: "html",			//전송받은 데이터를 변환시킬 컨텐츠 타입
+                success: function (result) {
+                    let graph = $("#container");
+                    graph.html(result);
+                }
+            });
+        }
+
+
+    </script>
+  
+
+
+
+</body>
+</html>

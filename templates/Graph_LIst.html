@@ -178,6 +178,12 @@
                                     <hr />
                                     <div class="stats">
                                         <i class="ti-calendar"></i> Day_Graph
+                                        <!-- <form action="/perday"> -->
+                                            <input type="date" name = "day" id="input_date" >
+                                            <span class="validity"></span>
+                                            <button class='perday'><input type="submit" onclick="input()"></button>
+                                            
+                                        <!-- </form> -->
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +279,7 @@
                                 <!-- 새로운 그래프가 담겨질 곳, 그래프 크기 -->
                                 <div style="width: 55%; height: 55%;" align-center>
                                     <!--차트가 그려질 컨버스-->
-                                    <canvas id="myChart"></canvas>
+                                    <iframe src="http://127.0.0.1:3000/perday?day=2022-10-11" frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
                                 </div>
 
                                 <hr>
@@ -386,6 +392,20 @@
 
 
 </body>
+
+    <script>
+        function input(){
+            const dday= document.querySelector("#input_date").value;
+        let perday = dday;
+        let graph = "http://127.0.0.1:3000/perday?day="+perday
+
+        let ifr = document.querySelector('iframe')
+
+        ifr.src = graph
+
+        }
+
+    </script>
 
     <!--   Core JS Files   -->
     <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
