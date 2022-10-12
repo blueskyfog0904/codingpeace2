@@ -1,6 +1,16 @@
+from http.client import HTTPResponse
+import imp
 from flask import Flask, request,render_template,redirect,url_for,session
 import db
-# import dbyolo
+import dbyolo
+import matplotlib.pyplot as plt, mpld3
+
+from matplotlib import font_manager, rc
+import numpy as np
+font_path = "C:/Windows/Fonts/NGULIM.TTF"
+font = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family=font)
+
 app = Flask(__name__, static_url_path="/static")
 app.secret_key="My_key"
 
@@ -76,6 +86,173 @@ def result():
       #for i,v in enumerate(result):
        # print(i,v,v[i])
         return render_template("result.html",result = result)
+
+
+@app.route('/perday',methods=['POST','GET']) # 예시 http://127.0.0.1:5000/perday?day=2022.10.11&ani=wBoar
+def perday():
+    if request.method == 'GET':
+        par =request.args.get('day')
+        # ani= request.args.get('ani')
+        
+        # df = dbyolo.perday(par,ani)
+        df = dbyolo.perday(par)
+        timeline=[]
+        
+        for i in range(24):
+            timeline.append(0)
+            
+        for i in range(len(df)):
+            index = df['ANI_DATE'][i][11:13] #12
+            timeline[int(index)-1] +=1
+
+        fig=plt.figure() #plt.figure(figsize=(8,8))
+        
+        # mpld3.show()
+        plt.plot(timeline,'ks-', mec='w', mew=5, ms=12)
+        html_graph=mpld3.fig_to_html(fig)
+        return html_graph #덮어쓰기
+        return render_template('perday.html', result = html_graph) #html로 보내기
+ 
+ 
+ 
+@app.route('/perday2',methods=['POST','GET']) # 예시 http://127.0.0.1:5000/perday?day=2022.10.11&ani=wBoar
+def perday2():
+    if request.method == 'GET':
+        par =request.args.get('day')
+        ani= request.args.get('ani')
+        
+        
+        ##
+        df = dbyolo.perday(par,ani)
+        df_total=dbyolo.perday_total(par) #오버라이드안되넹..
+        y1=[] #y축
+        y2=[] #y축
+        x=[] #x축
+
+        for i in range(24):
+            y1.append(0)
+            y2.append(0)
+            x.append(i)
+
+        for i in range(len(df)):
+            index = df['ANI_DATE'][i][11:13] #12
+            index_total = df_total['ANI_DATE'][i][11:13] #12
+            y1[int(index)-1] +=1 
+            y2[int(index_total)-1] +=1 
+            
+            
+        y1= np.array(y1)    
+        y2= np.array(y2)    
+
+        x= np.array(x)
+
+
+
+        fig, ax1 =plt.subplots()
+        # ax1.bar(x, y1, color='deeppink', label='Demand', alpha=0.7, width=0.7)
+
+        ax1.set_xlabel('시간대 별')
+        if ani =='고라니':
+            axisname='고라니'
+        else:
+            axisname='멧돼지'
+        ax1.bar(x, y1, color='deeppink', label=f'{axisname}', alpha=0.7, width=0.7)
+            
+        ax1.set_ylabel(f'{axisname}')
+        ax1.tick_params(axis='both', direction='in')
+        plt.legend()
+        ax2 = ax1.twinx()
+        ax2.plot(x, y2, '-s', color='blue', markersize=3, linewidth=2, alpha=0.7, label='통합')
+        ax2.set_ylabel('고라니+멧돼지')
+        ax2.tick_params(axis='y', direction='in')
+        plt.legend(loc=(0.8,0.8))
+        # plt.show()
+
+
+        # fig=plt.figure() #plt.figure(figsize=(8,8))
+        html_graph=mpld3.fig_to_html(fig)
+        ##
+        
+        return html_graph #덮어쓰기
+ 
+ 
+ 
+    
+    
+
+
+
+@app.route('/permonth',methods=['POST','GET']) #예시 http://127.0.0.1:5000/permonth?month=2022.10&ani=wBoar
+def permonth():
+    if request.method == 'GET':
+        par =request.args.get('month')
+        ani= request.args.get('ani')
+        df = dbyolo.permonth(par,ani)
+        timeline=[]
+        
+        if int(par[5:7]) in [1,3,5,7,8,10,12]:
+            howlong=31
+        elif int(par[5:7]) ==2:
+            if int(par[:4])%4==0:
+                howlong=29
+            else:
+                howlong=28 
+        else:
+            howlong=30
+        for i in range(howlong):
+            timeline.append(0)
+            
+        for i in range(len(df)):
+            index = df['ANI_DATE'][i][8:10] #일자조회
+            timeline[int(index)-1] +=1
+
+        fig=plt.figure() 
+        plt.plot(timeline,'ks-', mec='w', mew=5, ms=20)
+        # mpld3.show()
+        html_graph=mpld3.fig_to_html(fig)
+        # return render_template('permonth.html', result = html_graph)
+        # return mpld3.fig_to_html(fig) #덮어쓰기
+        return html_graph
+
+
+    
+
+
+@app.route('/perweek',methods=['POST','GET']) # 예시 http://127.0.0.1:5000/perweek?day1=2022.10.01&day2=2022.10.17&ani=wDeer
+def perweek():
+    if request.method == 'GET':
+        whatday1 =request.args.get('day1')
+        whatday2 =request.args.get('day2')
+        ani= request.args.get('ani')
+        
+        df = dbyolo.during(whatday1,whatday2,ani)
+        timeline=[]
+        xline=[]
+        gap=int(whatday2[8:10])-int(whatday1[8:10])+1
+        for i in range(gap):
+            timeline.append(0)
+            xline.append(i+1)
+
+        for i in range(len(df)):
+            index = df['ANI_DATE'][i][8:10] #일자
+            timeline[int(index)-1-int(whatday1[8:10])] +=1
+
+        
+        fig=plt.figure()
+        plt.plot(xline,timeline,'ks-', mec='w', mew=5, ms=20)
+        # mpld3.show()
+        return mpld3.fig_to_html(fig)  #덮어쓰기
+
+
+
+
+
+
+
+
+
+
+
 
 
 # @app.route('/result2',methods=['POST','GET'])
