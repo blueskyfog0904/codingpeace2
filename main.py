@@ -44,6 +44,22 @@ def join():
 def dashboard(): 
     return render_template('dashboard.html')
 
+@app.route('/Record_Check',methods=['POST','GET'])
+def Record_Check(): 
+    return render_template('Record_Check.html')
+
+@app.route('/Graph_LIst',methods=['POST','GET'])
+def Graph_LIst(): 
+    return render_template('Graph_LIst.html')
+
+@app.route('/maps',methods=['POST','GET'])
+def maps(): 
+    return render_template('maps.html')
+
+@app.route('/notifications',methods=['POST','GET'])
+def notifications(): 
+    return render_template('notifications.html')
+
 
 
 @app.route('/result',methods=['POST','GET'])
