@@ -65,10 +65,10 @@ gif 사각 라운드로 바꿈 */
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
-                        <a href="#home" class="nav-item nav-link active">Main</a>
-                        <a href="./dashboard.html" class="nav-item nav-link">Dashboard</a>
-                        <a href="./T_dashboard_1/paper-dashboard-master/Record_Check.html" class="nav-item nav-link">Record Check</a>
-                        <a href="./T_dashboard_1/paper-dashboard-master/Graph_LIst.html" class="nav-item nav-link">Graph  List</a>
+                        <a href="/" class="nav-item nav-link active">Main</a>
+                        <a href="/dashboard" class="nav-item nav-link">Dashboard</a>
+                        <a href="/Record_Check" class="nav-item nav-link">Record Check</a>
+                        <a href="/Graph_LIst" class="nav-item nav-link">Graph  List</a>
                         <!-- <a href="#feature" class="nav-item nav-link">Record Chech</a> -->
                         <!-- <a href="#pricing" class="nav-item nav-link"></a> -->
                         <!-- <a href="#review" class="nav-item nav-link">Review</a> -->
@@ -76,9 +76,10 @@ gif 사각 라운드로 바꿈 */
                     </div>
                     <!-- 기존의 Start Free Trial 버튼 log out 버튼으로 바뀜-->
                     {% if session['user_id']%}
-                    <p>{{session['user_id']}}       </p>
-                    {% endif %}
-                    <a href="./logout" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    <p>{{session['user_id']}} 님 환영합니다      </p>
+                    <a href="/logout" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}                
+                    
                 </div>
                 </div>
             </nav>
