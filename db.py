@@ -24,6 +24,33 @@ def get_pw(id,pw):
     cursor.close()
     conn.close()
     return a
+
+def get_data(id, start, finish):
+    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+    user_id=id
+    cursor = conn.cursor()
+    sql = f"select * from ANI where ANI_DATE between '{start}%' and '{finish}%' and USER_ID='{user_id}' order by ANI_DATE"
+    cursor.execute(sql)
+    data = cursor.fetchall()
+    data_list=[]
+    print(data)
+
+    for obj in data:
+        data_dic = {
+            'user_id' : obj[0],
+            'cam_seq': obj[1],
+            'ani_date':obj[2],
+            'ani_type': obj[3],
+            'img_path' : obj[4]
+        }
+        data_list.append(data_dic)
+        
+    cursor.close()
+    conn.close()
+
+    return data_list
+
+    
     
     
 def insert_mem(request):

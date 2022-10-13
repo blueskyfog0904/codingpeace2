@@ -61,7 +61,17 @@ def dashboard():
 
 @app.route('/Record_Check',methods=['POST','GET'])
 def Record_Check(): 
-    return render_template('Record_Check.html')
+    if request.method == 'GET':
+        if 'user_id' in session:
+            id=session['user_id']
+        date1 = request.args.get('date1')
+        date2 = request.args.get('date2')
+        print(id, date1, date2)
+
+        data_list1 = db.get_data(id, date1, date2)
+        print(data_list1)        
+
+    return render_template('Record_Check.html', name=id, data_list=data_list1)
 
 @app.route('/Graph_LIst',methods=['POST','GET'])
 def Graph_LIst(): 

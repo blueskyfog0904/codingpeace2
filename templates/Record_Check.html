@@ -360,7 +360,15 @@
                             <div class="header">
                                 <h4 class="title">출현기록 데이터</h4>
                                 <p class="category">Appearance record data</p>
+                                <form action="/Record_Check" method="GET">
+                                    <input type="date" name = "date1" id="input_date1">
+                                    <span class="validity"></span>
+                                    <input type="date" name = "date2" id="input_date2">
+                                    <span class="validity"></span>
+                                    <input type="submit">
+                                </form>
                             </div>
+
                              <div class="content"> 
                                 <!--표가 들어올 공간 -->
                                 <!-- <div class="container-fluid">
@@ -384,7 +392,7 @@
                                                             <th>야생동물종류(멧돼지/라니)</th>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
+                                                            <tr src="">
                                                                 <td>1</td>
                                                                 <td>회원아이디1</td>
                                                                 <td>카메라순번1</td>
@@ -393,41 +401,16 @@
                                                                     <!-- <input type="button"> -->
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>회원아이디2</td>
-                                                                <td>카메라순번2</td>
-                                                                <td>2022.10.12</td>
-                                                                <td>하트성결언니하트</td>
+                                                            {% for obj in data_list %}
+                                                            <tr src="">
+                                                                <!-- <td>{{loop.index}}</td> -->
+                                                                <td>{{user_id}}</td>
+                                                                <td>{{cam_seq}}</td>
+                                                                <td>{{ani_date}}</td>
+                                                                <td>{{ani_type}}</td>                                                                                                           
                                                             </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>회원아이디3</td>
-                                                                <td>카메라순번3</td>
-                                                                <td>2022.10.11</td>
-                                                                <td>모라니</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>회원아이디4</td>
-                                                                <td>카메라순번4</td>
-                                                                <td>2022.10.10</td>
-                                                                <td>차고라니</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>5</td>
-                                                                <td>회원아이디5</td>
-                                                                <td>카메라순번5</td>
-                                                                <td>2022.10.09</td>
-                                                                <td>임다</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>6</td>
-                                                                <td>회원아이디6</td>
-                                                                <td>카메라순번6</td>
-                                                                <td>2022.10.08</td>
-                                                                <td>coding_peace</td>
-                                                            </tr>
+                                                            {% endfor %}
+                                                            
                                                         </tbody>
                                                     </table>
                     
@@ -516,6 +499,14 @@
      function img_1{
         alert('이미지짠')
      }
+
+    function tableDate(){
+        const day1 = document.querySelector("#input_date1").value;
+        const day2 = document.querySelector("#input_date2").value;
+
+        
+
+    }
 
     </script>
 
