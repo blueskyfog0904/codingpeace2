@@ -52,7 +52,7 @@
             <ul class="nav">
                 <li>
                     <!-- 기존거 주석처리 -->
-                    <!-- <li class="active"> -->
+                    <!-- <li class="active">  -->
                     <a href="/dashboard">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
@@ -64,13 +64,14 @@
                         <p>Record Check</p>
                     </a>
                 </li>
-             
+              
                 <li class="active">
                     <a href="/Graph_LIst">
                         <i class="ti-view-list-alt"></i>
                         <p>Graph List</p>
-                    </a>
+                    </a>                  
                 </li>
+                
                 <!-- 필요없는 html 주석처리 -->
                 <!-- <li>
                     <a href="typography.html">
@@ -90,18 +91,14 @@
                         <p>Maps</p>
                     </a>
                 </li>
-                <li>
+                <!-- 필요없는 메뉴 주석처리 -->
+                <!-- <li>
                     <a href="/notifications">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="ti-export"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
+                </li> -->
+				
             </ul>
     	</div>
     </div>
@@ -109,6 +106,14 @@
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
+
+                  <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                  <span class="test_1" style="margin-left: 76%;">  
+                    {% if session['user_id']%}  {{session['user_id']}} 님 
+                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}   
+                 </span>
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
                         <span class="sr-only">Toggle navigation</span>
@@ -314,52 +319,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
-
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-check"></i> Data information certified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               
+                    
                 </div>
             </div>
         </div>
@@ -405,7 +366,7 @@
 
     <script>
         function daygraph(){
-            const dday= document.querySelector("#input_date").value;
+            const dday= document.querySelector("#input_date").value;            
         let perday = dday;
         let graph = "http://127.0.0.1:3000/perday?day="+perday
 
@@ -414,6 +375,7 @@
         ifr.src = graph
         let graphText = document.querySelector('#graphText')
         graphText.innerText="일간 그래프"
+        
 
 
         }
@@ -427,14 +389,27 @@
 
         let ifr = document.querySelector('iframe')
 
+        ifr.src = graph
+
         let graphText = document.querySelector('#graphText')
         graphText.innerText="주간 그래프"
         }
 
         function monthgraph(){
             const mday1 = document.querySelector("#input_dateM").value;
-            let mday = mday1.substring(0,6)
+            
+            let mday = mday1.substring(0,7)
+
             let graph = "http://127.0.0.1:3000/permonth?month="+mday;
+        
+            let ifr = document.querySelector('iframe')
+
+            ifr.src = graph
+
+            let graphText = document.querySelector('#graphText')
+            
+            
+            graphText.innerText="월간 그래프"
         }
 
 
