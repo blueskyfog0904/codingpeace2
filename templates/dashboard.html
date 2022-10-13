@@ -32,6 +32,11 @@
     <link href="/static/css/themify-icons.css" rel="stylesheet">
     
     <style>
+        #video{
+            display: none;
+            
+        }
+
         /* 퇴치기 현황기 크기 */
         .video1{
             height: 34.3%;
@@ -340,11 +345,13 @@
                             
                                 <div class="content">
                                       <!-- 이미지 크기 설정 -->
-                                        <video class="video" muted autoplay loop width="40%">
+                                        <video id="video" muted autoplay loop width="40%">
                                             
                                             <source src="./static/img/home.mp4" type="video/mp4">
                                             <strong>Your browser does not support the video tag.</strong>
                                           </video>
+                                          <button id="ontime" onclick="onDisplay()">실시간 연결</button>
+                                          
                                             <!-- 기존그래프 주석처리 -->
                                     <!-- <div id="chartHours" class="ct-chart"></div>
                                     <div class="footer">
@@ -380,6 +387,7 @@
                                     <source src="/static/img/test_img_D4.mp4" type="video/mp4"  >
                                     <strong>Your browser does not support the video tag.</strong>
                                   </video>
+                                  
 
 
                                   <!-- 퇴치기 작동 현황 작동시 A 이미지 / 아닐시 B 이미지 -->
@@ -599,7 +607,30 @@
 
 </body>
 
+<script>
+    // $(document).on('click', '#ontime', ()=>{
+    //     $('#ontime').text('연결종료')    
+    //     $('#video').show()        
+    //     $('#ontime').attr('id', 'offtime')
+        
+    // })
+
+
+    let onDisplay=()=>{
+               
+        if (document.getElementById('ontime').innerText=='연결종료'){
+            $('#video').hide()
+            $('#ontime').text('실시간 연결') 
+        }else{
+            $('#video').show()
+            $('#ontime').text('연결종료')   
+        }
+
+    }
+</script>
+
 <!--   Core JS Files   -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
 
