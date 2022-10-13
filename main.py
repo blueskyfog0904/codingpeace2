@@ -188,8 +188,12 @@ def permonth():
         par =request.args.get('month')
         # ani= request.args.get('ani')
         df = dbyolo.permonth(par)
+        df_wBoar = df.loc[df['ANI_TYPE']=='wBoar']
+        df_wDeer = df.loc[df['ANI_TYPE']=='wDeer']
         # df = dbyolo.permonth(par,ani)
         timeline=[]
+        timelineWboar=[]
+        timelineWdeer=[]
         
         if int(par[5:7]) in [1,3,5,7,8,10,12]:
             howlong=31
@@ -202,13 +206,50 @@ def permonth():
             howlong=30
         for i in range(howlong):
             timeline.append(0)
+            timelineWboar.append(0)
+            timelineWdeer.append(0)
             
         for i in range(len(df)):
             index = df['ANI_DATE'][i][8:10] #일자조회
             timeline[int(index)-1] +=1
+        
+        for i in df_wBoar['ANI_DATE']:
+            index = i[8:10] #일자조회
+            timelineWboar[int(index)-1] +=1
+
+        for i in df_wDeer['ANI_DATE']:
+            index = i[8:10] #일자조회
+            timelineWdeer[int(index)-1] +=1
+
+        
+        # fig=plt.figure() 
+        # plt.grid(True, color='gray', alpha=0.1)
+        # plt.xlabel('날     짜', labelpad=5, fontsize=18)
+        # plt.ylabel('출 현 횟 수', labelpad=5, fontsize=18)
+        # # plt.plot(timeline,'ks-', mec='w', mew=5, ms=20, color='b')
+        # plt.plot(timeline, color='b', label='모든 야생동물', linestyle='solid', marker='X')
+        # plt.plot(timelineWboar, color='r', label='멧돼지', linestyle='solid', marker='X')
+        # plt.plot(timelineWdeer, color='g', label='고라니', linestyle='solid', marker='X')
 
         fig=plt.figure() 
-        plt.plot(timeline,'ks-', mec='w', mew=5, ms=20)
+        plt.subplot(2,1,1)
+        plt.subplots_adjust(hspace=0.5)
+        plt.plot(timeline, color='b', label='모든 야생동물', linestyle='solid', marker='v')
+        plt.grid(True, color='gray', alpha=0.1)
+        plt.xlabel('날     짜', labelpad=5, fontsize=18)
+        plt.ylabel('출 현 횟 수', labelpad=5, fontsize=18)
+        plt.legend(fontsize=12)
+        # plt.plot(timeline,'ks-', mec='w', mew=5, ms=20, color='b')
+        
+        plt.subplot(2,1,2)
+        plt.plot(timelineWboar, color='r', label='멧돼지', linestyle='solid', marker='o')
+        plt.plot(timelineWdeer, color='g', label='고라니', linestyle='solid', marker='X')
+        plt.grid(True, color='gray', alpha=0.1)
+        plt.xlabel('날     짜', labelpad=5, fontsize=18)
+        plt.ylabel('출 현 횟 수', labelpad=5, fontsize=18)
+        
+        plt.legend(fontsize=12)
+        
         # mpld3.show()
         html_graph=mpld3.fig_to_html(fig)
         # return render_template('permonth.html', result = html_graph)
