@@ -38,6 +38,10 @@
         #chartActivity{
             height: 60%;
         }
+
+        .ahfksl{
+            left: -50px;
+        }
 </style> 
 
 </head>
@@ -62,13 +66,15 @@
                 </div>
 
                 <ul class="nav">
-                    <li class="active">
+                    <li> 
+                        <!-- <li class="active"> -->
                         <a href="/dashboard">
                             <i class="ti-panel"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
+                        <li class="active">
                         <a href="/Record_Check">
                             <i class="ti-user"></i>
                             <p>Record Check</p>
@@ -99,7 +105,8 @@
                             <p>Maps</p>
                         </a>
                     </li>
-                    <li>
+                    <!-- 필요없는 메뉴 주석처리 -->
+                    <!-- <li>
                         <a href="/notifications">
                             <i class="ti-bell"></i>
                             <p>Notifications</p>
@@ -110,21 +117,30 @@
                             <i class="ti-export"></i>
                             <p>Upgrade to PRO</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
 
     <div class="main-panel">
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+                
+            <div class="container-fluid" >
+                <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                <span class="test_1" style="margin-left: 76%;">  
+                    {% if session['user_id']%}  {{session['user_id']}} 님 
+                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}   
+                 </span>
+                
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle">
+                
+                     <button type="button" class="navbar-toggle">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar bar1"></span>
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
-                    </button>
+                    </button> 
                     <a class="navbar-brand" href="#">Record Check</a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -361,54 +377,56 @@
                                                 <!-- <div class="content table-responsive table-full-width"> -->
                                                     <table class="table table-striped">
                                                         <thead>
-                                                            <th>ID</th>
-                                                            <th>Name</th>
-                                                            <th>Salary</th>
-                                                            <th>Country</th>
-                                                            <th>City</th>
+                                                            <th ></th>
+                                                            <th >회원ID</th>
+                                                            <th>카메라 순번</th>
+                                                            <th>출현일</th>
+                                                            <th>야생동물종류(멧돼지/라니)</th>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <td>Dakota Rice</td>
-                                                                <td>$36,738</td>
-                                                                <td>Niger</td>
-                                                                <td>Oud-Turnhout</td>
+                                                                <td>회원아이디1</td>
+                                                                <td>카메라순번1</td>
+                                                                <td>2022.10.13</td>
+                                                                <td>갓광현킹광현
+                                                                    <!-- <input type="button"> -->
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
-                                                                <td>Minerva Hooper</td>
-                                                                <td>$23,789</td>
-                                                                <td>Curaçao</td>
-                                                                <td>Sinaai-Waas</td>
+                                                                <td>회원아이디2</td>
+                                                                <td>카메라순번2</td>
+                                                                <td>2022.10.12</td>
+                                                                <td>하트성결언니하트</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>3</td>
-                                                                <td>Sage Rodriguez</td>
-                                                                <td>$56,142</td>
-                                                                <td>Netherlands</td>
-                                                                <td>Baileux</td>
+                                                                <td>회원아이디3</td>
+                                                                <td>카메라순번3</td>
+                                                                <td>2022.10.11</td>
+                                                                <td>모라니</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>4</td>
-                                                                <td>Philip Chaney</td>
-                                                                <td>$38,735</td>
-                                                                <td>Korea, South</td>
-                                                                <td>Overland Park</td>
+                                                                <td>회원아이디4</td>
+                                                                <td>카메라순번4</td>
+                                                                <td>2022.10.10</td>
+                                                                <td>차고라니</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>5</td>
-                                                                <td>Doris Greene</td>
-                                                                <td>$63,542</td>
-                                                                <td>Malawi</td>
-                                                                <td>Feldkirchen in Kärnten</td>
+                                                                <td>회원아이디5</td>
+                                                                <td>카메라순번5</td>
+                                                                <td>2022.10.09</td>
+                                                                <td>임다</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>6</td>
-                                                                <td>Mason Porter</td>
-                                                                <td>$78,615</td>
-                                                                <td>Chile</td>
-                                                                <td>Gloucester</td>
+                                                                <td>회원아이디6</td>
+                                                                <td>카메라순번6</td>
+                                                                <td>2022.10.08</td>
+                                                                <td>coding_peace</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -494,6 +512,13 @@
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="/static/js/demo.js"></script>
 
+    <script>
+     function img_1{
+        alert('이미지짠')
+     }
+
+    </script>
+
 	<script type="text/javascript">
     	$(document).ready(function(){
 
@@ -510,6 +535,6 @@
             // });
 
     	});
-	</script>
+	</>
 
 </html>
