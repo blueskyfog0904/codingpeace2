@@ -91,12 +91,13 @@
                         <p>Maps</p>
                     </a>
                 </li>
-                <li>
+                <!-- 필요없는 메뉴 주석처리 -->
+                <!-- <li>
                     <a href="/notifications">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
-                </li>
+                </li> -->
 				
             </ul>
     	</div>
@@ -105,6 +106,14 @@
     <div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
+
+                  <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                  <span class="test_1" style="margin-left: 76%;">  
+                    {% if session['user_id']%}  {{session['user_id']}} 님 
+                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}   
+                 </span>
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle">
                         <span class="sr-only">Toggle navigation</span>
