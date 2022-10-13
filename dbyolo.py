@@ -172,7 +172,7 @@ def during(whatday1,whatday2):
     # ani_type=ani
     with conn.cursor() as cursor:
         # cursor.execute(f"select * from ani where ani_date between '{start}' and '{finish}%'  and ani_type='{ani_type}' order by ANI_DATE ")
-        cursor.execute(f"select * from ani where ani_date between like '{start}%' and like '{finish}%' order by ANI_DATE ")
+        cursor.execute(f"select * from ani where ani_date between '{start}%' and '{finish}%' order by ANI_DATE ")
         duringlist = cursor.fetchall()
         if not duringlist:
             print('====================================================================')
@@ -188,6 +188,7 @@ def during(whatday1,whatday2):
                     col.append(i[0])
             df=pd.DataFrame(duringlist)
             df.columns=col
+            return df
 
 
 def frommark(mark,day):
