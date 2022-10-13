@@ -224,9 +224,10 @@ def perweek():
     if request.method == 'GET':
         whatday1 =request.args.get('day1')
         whatday2 =request.args.get('day2')
-        ani= request.args.get('ani')
+        # ani= request.args.get('ani')
         
-        df = dbyolo.during(whatday1,whatday2,ani)
+        # df = dbyolo.during(whatday1,whatday2,ani)
+        df = dbyolo.during(whatday1,whatday2)
         timeline=[]
         xline=[]
         gap=int(whatday2[8:10])-int(whatday1[8:10])+1
