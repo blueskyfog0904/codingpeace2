@@ -2985,7 +2985,7 @@ caption {
 }
 
 th {
-    text-align: left
+    text-align: center
 }
 
 .table {
@@ -8336,4 +8336,7 @@ button.close {
     .hidden-print {
         display: none !important
     }
+}
+.test_1{
+    text-align: right;
 }
