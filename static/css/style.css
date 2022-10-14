@@ -153,7 +153,7 @@ h6,
     font-family: 'Jost', sans-serif;
     font-size: 20px;
     font-weight: 500;
-    color: var(--light) !important;
+    /* color: var(--light) !important; */
     outline: none;
     transition: .5s;
     text-shadow: 4px 4px 4px gray;
@@ -240,6 +240,8 @@ h6,
         top: 0;
         left: 0;
         z-index: 999;
+        /* 백그라운드 배경적용 */
+        background: #FFFFFF;
     }
     
     .sticky-top.navbar-light {
