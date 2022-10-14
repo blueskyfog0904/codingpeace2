@@ -1562,10 +1562,10 @@ textarea.form-control {
       padding-left: 65px; }
   .card .icon-big {
     font-size: 3em;
-    min-height: 64px; }
+    min-height: 64px; margin-left: 250px;}
   .card .numbers {
     font-size: 2em;
-    text-align: center; }
+    text-align: right; margin-right: 30px;}
     .card .numbers p {
       margin: 0; }
   .card ul.team-members li {

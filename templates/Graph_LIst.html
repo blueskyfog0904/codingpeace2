@@ -31,7 +31,12 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="/static/css/themify-icons.css" rel="stylesheet">
 
+    
+    
+
 </head>
+
+
 <body>
 
 <div class="wrapper">
@@ -187,7 +192,7 @@
                                             <input type="date" name = "day" id="input_date" >
                                             <span class="validity"></span>
                                             <button class='perday'><input type="submit" onclick="daygraph()"></button><br>
-                                            <h4></h4>
+                                            
                                             
                                         <!-- </form> -->
                                     </div>
@@ -292,14 +297,16 @@
                             </div>
                             <div class="content">
                                 <!-- 새로운 그래프가 담겨질 곳, 그래프 크기 -->
-                                <div style="width: 55%; height: 55%;" margin:0 auto; >
+                                <div style="width: 55%; height: 55%;" >
                                     <!--차트가 그려질 컨버스-->
-                                    <iframe src="" frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
+                                    <p style="position: relative; left:310px;">
+                                    <iframe style="text-align: center; margin: 0 auto; display: inline-block;" id="iframe" src="" frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
+                                    </p>
                                 </div>
 
                                 <hr>
                                 <div class="stats">
-                                    <i class="ti-reload"></i> Updated 3 minutes ago
+                                    <!-- <i class="ti-reload"></i> Updated 3 minutes ago -->
                                 </div>
                                 
                                 <!-- 기존 그래프 -->

@@ -6,7 +6,7 @@ import sys
 #연결에 필요한 기본 정보 (유저, 비밀번호, 데이터베이스 서버 주소)
 
 def get_pw(id,pw):
-    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8")
 
     user_id=id
     user_pw=pw
@@ -26,7 +26,7 @@ def get_pw(id,pw):
     return a
 
 def get_data(id, start, finish):
-    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8")
     user_id=id
     cursor = conn.cursor()
     sql = f"select * from ANI where ANI_DATE between '{start}%' and '{finish}%' and USER_ID='{user_id}' order by ANI_DATE"
@@ -54,7 +54,7 @@ def get_data(id, start, finish):
     
     
 def insert_mem(request):
-    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8")
 
     id=request.form.get("USER_ID")
     pw=request.form.get("USER_PW")
@@ -72,7 +72,7 @@ def insert_mem(request):
     
 
 def test(result):
-    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8",  nencoding="UTF-8")
+    conn = cx_Oracle.connect('final_ai4','smhrd4','project-db-stu.ddns.net:1524/xe', encoding="UTF-8")
 
     # with conn.cursor() as cur_ora:
     #     cur_ora.execute("select * from user1")
