@@ -4,6 +4,7 @@ from flask import Flask, request,render_template,redirect,url_for,session
 import db
 import dbyolo
 import matplotlib.pyplot as plt, mpld3
+import dbyolo_dev
 
 from matplotlib import font_manager, rc
 import numpy as np
@@ -56,8 +57,10 @@ def e404():
     return render_template('404.html')
 
 @app.route('/dashboard',methods=['POST','GET'])
-def dashboard(): 
-    return render_template('dashboard.html')
+def devtest():
+    if request.method=='GET':
+        result=dbyolo_dev.search()
+        return render_template('dashboard.html',result = result)
 
 @app.route('/Record_Check',methods=['POST','GET'])
 def Record_Check(): 
