@@ -296,7 +296,7 @@
                                 <h4 class="title">포착 사진</h4>
                                 <p class="category">Catch the animail</p>
                             <div class="content">
-                            <img  id="catchimg" calss ="img_1" src="/static/img/bg-triangle.jpg" alt="No image" width="40%" >
+                            <img  id="catchimg" calss ="img_1" src="/static/img/s12.png" alt="No image" width="40%" >
                             </div>
                             <!-- 기존그래프 주석처리 -->
                             <!-- <div class="content">
@@ -389,7 +389,7 @@
                                                             <th >회원ID</th>
                                                             <th>카메라 순번</th>
                                                             <th>출현일</th>
-                                                            <th>야생동물종류(멧돼지/라니)</th>
+                                                            <th>야생동물종류(멧돼지/고라니)</th>
                                                         </thead>
                                                         <tbody>                                               
                                                             
@@ -491,13 +491,20 @@
 
                     let resultHTML = "";
 
+                    
+
                     for(let i=0; i<result.length; i++){
+                        if (result[i].ani_type=='wDeer'){
+                            result[i].ani_type='고라니'
+                        }else{
+                            result[i].ani_type='멧돼지'
+                        }
                         resultHTML += `
                         <tr>
                             <td>${i+1}</td>
                             <td>${result[i].user_id}</td>
                             <td>${result[i].cam_seq}</td>
-                            <td>${result[i].ani_date}</td>
+                            <td>${result[i].ani_date}</td>                            
                             <td>${result[i].ani_type}</td>
                         </tr>
                         `
