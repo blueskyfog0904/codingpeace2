@@ -296,7 +296,7 @@
                                 <h4 class="title">포착 사진</h4>
                                 <p class="category">Catch the animail</p>
                             <div class="content">
-                            <img  calss ="img_1" src="/static/img/bg-triangle.jpg" alt="No image" width="40%" >
+                            <img  id="catchimg" calss ="img_1" src="/static/img/bg-triangle.jpg" alt="No image" width="40%" >
                             </div>
                             <!-- 기존그래프 주석처리 -->
                             <!-- <div class="content">
@@ -324,13 +324,12 @@
                                 <p class="category">Appearance record Graph</p>
                             </div>
                             <div class="content">
-                                    <div id="chartActivity" class="ct-chart" style="height:40%"></div>
+                                    <div id="chartActivity" class="ct-chart" style="height:40%">
+                                        <iframe src="" frameborder="0" scrolling="no" height="500px"align-center width="500px"></iframe>
+                                    </div>
 
                                 <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
+                                    
                                     <hr>
                                     <div class="stats">
                                         <i class="ti-check"></i> Data information certified
@@ -391,28 +390,27 @@
                                                             <th>출현일</th>
                                                             <th>야생동물종류(멧돼지/라니)</th>
                                                         </thead>
-                                                        <tbody>
-                                                            <tr src="">
-                                                                <td>1</td>
-                                                                <td>회원아이디1</td>
-                                                                <td>카메라순번1</td>
-                                                                <td>2022.10.13</td>
-                                                                <td>갓광현킹광현
-                                                                    <!-- <input type="button"> -->
-                                                                </td>
-                                                            </tr>
+                                                        <tbody>                                               
+                                                            
                                                             {% for obj in data_list %}
-                                                            <tr src="">
-                                                                <!-- <td>{{loop.index}}</td> -->
-                                                                <td>{{user_id}}</td>
-                                                                <td>{{cam_seq}}</td>
-                                                                <td>{{ani_date}}</td>
-                                                                <td>{{ani_type}}</td>                                                                                                           
+                                                            <tr src="/static/img/s12.png", onclick="imgch()">
+                                                                <td>{{loop.index}}</td>
+                                                                <td>{{obj.user_id}}</td>
+                                                                <td>{{obj.cam_seq}}</td>
+                                                                <td>{{obj.ani_date}}</td>
+                                                                {% if obj.ani_type=='wBoar'%}
+                                                                <td>멧돼지</td>
+                                                                {% endif %}
+                                                                {% if obj.ani_type=='wDeer'%}
+                                                                <td>고라니</td>
+                                                                {% endif %} 
+
                                                             </tr>
                                                             {% endfor %}
                                                             
                                                         </tbody>
                                                     </table>
+                                                    <p id="imglink" style="display:none">"/static/img/s12.png"</p>
                     
                                                 <!-- </div> -->
                                             </div>
@@ -472,6 +470,13 @@
 
 
 </body>
+    <script>
+        function imgch(){
+            var newImg = document.querySelector('#imglink')
+            var imglink = document.querySelector('#catchimg')
+            imglink.setAttribute('src', '/static/img/s12.png')
+        }
+    </script>
 
     <!--   Core JS Files   -->
     <script src="/static/js/jquery-1.10.2.js" type="text/javascript"></script>
@@ -502,9 +507,7 @@
 
     function tableDate(){
         const day1 = document.querySelector("#input_date1").value;
-        const day2 = document.querySelector("#input_date2").value;
-
-        
+        const day2 = document.querySelector("#input_date2").value;       
 
     }
 

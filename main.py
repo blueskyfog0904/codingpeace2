@@ -72,7 +72,8 @@ def Record_Check():
         print(id, date1, date2)
 
         data_list1 = db.get_data(id, date1, date2)
-        print(data_list1)        
+        
+        print(data_list1)
 
     return render_template('Record_Check.html', name=id, data_list=data_list1)
 
