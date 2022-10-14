@@ -4741,11 +4741,11 @@ fieldset:disabled .btn {
 .navbar-light .navbar-nav .nav-link.disabled {
     color: rgba(0, 0, 0, 0.3)
 }
-
-.navbar-light .navbar-nav .show>.nav-link,
+/* 메인화면 메인메뉴부분 */
+/* .navbar-light .navbar-nav .show>.nav-link,
 .navbar-light .navbar-nav .nav-link.active {
     color: rgba(0, 0, 0, 0.9)
-}
+} */
 
 .navbar-light .navbar-toggler {
     color: rgba(0, 0, 0, 0.55);

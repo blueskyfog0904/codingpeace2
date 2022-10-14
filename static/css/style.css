@@ -3,7 +3,7 @@
 
 :root {
     --primary: #73777B;
-    --secondary: #15133C;
+    --secondary: rgb(66 148 227 / 25%);
     --light: #F0F6FF;
     --dark: #262B47;
 }
@@ -152,11 +152,12 @@ h6,
     padding: 40px 0;
     font-family: 'Jost', sans-serif;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: bold;
     /* color: var(--light) !important; */
     outline: none;
     transition: .5s;
-    text-shadow: 4px 4px 4px gray;
+    /* dd 주석처리 */
+    /* text-shadow: 4px 4px 4px gray; */
 }
 
 .navbar-light .navbar-nav .nav-link::before {
@@ -340,7 +341,7 @@ h6,
     top: 0;
     left: 0;
     background: url(../img/screenshot-frame.png) center center no-repeat;
-    background-size: 260px 500px;
+    background-size: 340px 500px;
     z-index: 1;
 }
 
