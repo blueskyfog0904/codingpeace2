@@ -80,7 +80,10 @@ def Record_Check():
         
         print(data_list1)
 
-    return render_template('Record_Check.html', name=id, data_list=data_list1)
+        if request.args.get("type") == "ajax":
+            return data_list1
+        else:
+            return render_template('Record_Check.html', name=id, data_list=data_list1)
 
 @app.route('/Graph_LIst',methods=['POST','GET'])
 def Graph_LIst(): 
@@ -370,6 +373,67 @@ def perweek():
 
         return mpld3.fig_to_html(fig)  #덮어쓰기
 
+
+@app.route('/perweek2',methods=['POST','GET']) # 예시 http://127.0.0.1:5000/perweek?day1=2022.10.01&day2=2022.10.17&ani=wDeer
+def perweek2():
+    if request.method == 'GET':
+        whatday1 =request.args.get('day1')
+        whatday2 =request.args.get('day2')
+        # ani= request.args.get('ani')
+        
+        # df = dbyolo.during(whatday1,whatday2,ani)
+        df = dbyolo.during(whatday1,whatday2)
+        df_wBoar = df.loc[df['ANI_TYPE']=='wBoar']
+        df_wDeer = df.loc[df['ANI_TYPE']=='wDeer']
+        # df = dbyolo.permonth(par,ani)
+        timeline=[]
+        timelineWboar=[]
+        timelineWdeer=[]
+        
+        xline=[]
+        gap=int(whatday2[8:10])-int(whatday1[8:10])+1
+        for i in range(gap):
+            timeline.append(0)
+            timelineWboar.append(0)
+            timelineWdeer.append(0)
+            xline.append(i+1)
+
+        for i in range(len(df)):
+            index = df['ANI_DATE'][i][8:10] #일자
+            timeline[int(index)-1-int(whatday1[8:10])] +=1
+
+        for i in df_wBoar['ANI_DATE']:
+            index = i[8:10] #일자조회
+            timelineWboar[int(index)-1-int(whatday1[8:10])] +=1
+
+        for i in df_wDeer['ANI_DATE']:
+            index = i[8:10] #일자조회
+            timelineWdeer[int(index)-1-int(whatday1[8:10])] +=1
+
+
+        # mpld3.show()
+
+        fig=plt.figure() 
+        plt.subplot(2,1,1)
+        plt.subplots_adjust(hspace=0.5)
+        plt.plot(xline, timeline, color='b', label='모든 야생동물', linestyle='solid', marker='v')
+        plt.grid(True, color='gray', alpha=0.1)
+        plt.xlabel('날     짜', labelpad=5, fontsize=18)
+        plt.ylabel('출 현 횟 수', labelpad=5, fontsize=18)
+        plt.legend(fontsize=12)
+        # plt.plot(timeline,'ks-', mec='w', mew=5, ms=20, color='b')
+        
+        plt.subplot(2,1,2)
+        plt.plot(xline, timelineWboar, color='r', label='멧돼지', linestyle='solid', marker='o')
+        plt.plot(xline, timelineWdeer, color='g', label='고라니', linestyle='solid', marker='X')
+        plt.grid(True, color='gray', alpha=0.1)
+        plt.xlabel('날     짜', labelpad=5, fontsize=18)
+        plt.ylabel('출 현 횟 수', labelpad=5, fontsize=18)
+        
+        plt.legend(fontsize=12)
+    
+
+        return mpld3.fig_to_html(fig)  #덮어쓰기
 
 
 

@@ -324,17 +324,17 @@
                                 <p class="category">Appearance record Graph</p>
                             </div>
                             <div class="content">
-                                    <div id="chartActivity" class="ct-chart" style="height:40%">
-                                        <iframe src="" frameborder="0" scrolling="no" height="500px"align-center width="500px"></iframe>
+                                    <div id="chartActivity" class="ct-chart" style="height:40%" >
+                                        <iframe src=""  frameborder="0" scrolling="no" height="500px"align-center width="700px"></iframe>
                                     </div>
 
-                                <div class="footer">
+                                <!-- <div class="footer">
                                     
                                     <hr>
                                     <div class="stats">
                                         <i class="ti-check"></i> Data information certified
                                     </div>
-                                </div> 
+                                </div>  -->
 
 
                                 <!-- 기존 동그란 그래프 주석처리 -->
@@ -359,12 +359,13 @@
                             <div class="header">
                                 <h4 class="title">출현기록 데이터</h4>
                                 <p class="category">Appearance record data</p>
-                                <form action="/Record_Check" method="GET">
+                                <form action="/Record_Check" method="GET" onsubmit="return false;">
                                     <input type="date" name = "date1" id="input_date1">
                                     <span class="validity"></span>
                                     <input type="date" name = "date2" id="input_date2">
                                     <span class="validity"></span>
-                                    <input type="submit">
+                                    <input type="submit" onclick="weekgraph()">                                 
+                                    
                                 </form>
                             </div>
 
@@ -476,6 +477,53 @@
             var imglink = document.querySelector('#catchimg')
             imglink.setAttribute('src', '/static/img/s12.png')
         }
+
+        function weekgraph(){
+            const wday1 = document.querySelector("#input_date1").value;
+            const wday2 = document.querySelector("#input_date2").value;
+
+            $.ajax({
+                url:"/Record_Check",
+                data:{type:"ajax", date1:wday1, date2:wday2},
+                dataType:"JSON",
+                success:function(result){
+                    console.log(result);
+
+                    let resultHTML = "";
+
+                    for(let i=0; i<result.length; i++){
+                        resultHTML += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${result[i].user_id}</td>
+                            <td>${result[i].cam_seq}</td>
+                            <td>${result[i].ani_date}</td>
+                            <td>${result[i].ani_type}</td>
+                        </tr>
+                        `
+                    }
+
+                    $("table.table.table-striped > tbody").html(resultHTML);
+
+                    let graph = "http://127.0.0.1:3000/perweek?day1="+wday1+"&day2="+wday2       
+                    var ifr = document.querySelector('iframe')
+                    ifr.src = graph
+
+
+                }
+
+            });
+
+        //     const wday1 = document.querySelector("#input_dateW1").value;
+        //     const wday2 = document.querySelector("#input_dateW2").value;
+        // let day1 = wday1;
+        // let day2 = wday2;            
+        // let graph = "http://127.0.0.1:3000/perweek?day1="+day1+"&day2="+day2       
+
+        // var ifr = document.querySelector('iframe')
+        // ifr.src = graph
+        }
+
     </script>
 
     <!--   Core JS Files   -->
@@ -501,7 +549,7 @@
 	<script src="/static/js/demo.js"></script>
 
     <script>
-     function img_1{
+     function img_1(){
         alert('이미지짠')
      }
 
@@ -514,9 +562,9 @@
     </script>
 
 	<script type="text/javascript">
-    	$(document).ready(function(){
+    	// $(document).ready(function(){
 
-        	demo.initChartist();
+        // 	demo.initChartist();
 
             // 필요없는 알람 주석처리
         	// $.notify({
@@ -529,6 +577,6 @@
             // });
 
     	});
-	</>
+	</script>
 
 </html>
