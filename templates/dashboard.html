@@ -546,6 +546,53 @@ select {
                                             <div class="stats">
                                             <h2 class="titleee"> 카메라 개별 제어 </h2>
                                             <p class="category">Camera individual control</p><br>
+                                                    <!-- 표추가 -->
+                                                    <div class="content">
+                                                        <table class="table table-striped" width="auto" >
+                    
+                                                            <thead boarder="1">
+                                                                <tr>
+                                                                    <th>작동기</th>
+                                                                    <th>제어</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                    
+                                                                {% for i in result %}
+                                                                <tr>
+                                                                    <td>
+                                                                        {%if i.kick_seq == 1%}
+                                                                        <img src="/static/img/device1.png" alt="img">
+                                                                        {%elif i.kick_seq ==2%}
+                                                                        <img src="/static/img/device2.png" alt="img">
+                                                                        {%else%}
+                                                                        <img src="/static/img/device3.png" alt="img">
+                                                                        {%endif%}
+                                                                    </td>
+                    
+                                                                    <td>{{i.kick_seq}}</td>
+                                                                    {% if i.kick_if_run=='Y':%}
+                                                                        <td><button class="view">Yes</button></td>
+                                                                    {%elif i.kick_if_run=='N':%}
+                                                                        <td><button class="delete2">No</button></td>
+                                                                    {%endif%}
+                    
+                                                                    <td>{{i.kick_if_date}}</td>
+                                                                    {% if result.index(i)%2== 0%}
+                                                                    <td rowspan="2">
+                                                                        <button class="delete">Video</button>
+                                                                    </td>
+                                                                    {%endif%}
+                                                                </tr>{%endfor%}
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <td colspan="5" class="tablefoot"></td>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+
+
+
                                             </div>
                                         </div>
                                 <label class="switch">
