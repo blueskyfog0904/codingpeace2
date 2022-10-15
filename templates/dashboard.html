@@ -141,7 +141,7 @@ select {
             border-radius: 50%;
         }
 
-        p1 {
+        .p1 {
             margin: 0px;
             display: inline-block;
             font-size: 15px;
@@ -150,7 +150,7 @@ select {
 
         img {
             width: 90px;
-            height: 90px;
+            /* height: 90px; */
         }
 
         .view,
@@ -302,7 +302,7 @@ select {
                     <li>
                         <a href="/Record_Check">
                             <i class="ti-user"></i>
-                            <p>출현기록 자료</p>
+                            <p>출현기록자료</p>
                         </a>
                     </li>
                     <li>
@@ -337,6 +337,14 @@ select {
         <div class="main-panel">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
+
+                 <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                 <span class="test_1" style="margin-left: 76%;">  
+                    {% if session['user_id']%}  {{session['user_id']}} 님 
+                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}   
+                 </span>
+
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle">
                             <span class="sr-only">Toggle navigation</span>
@@ -363,6 +371,7 @@ select {
                             <div class="card">
                                 <div class="header">
                                     <h2 class="titleee"> 실시간 영상 </h2>
+                                    <p class="category">24hour live video</p><br>
                                 <label class="switch">카메라 선택:</label>
                                 
                                 <select name="pets" id="pet-select">
@@ -400,10 +409,10 @@ select {
                                 <div class="content">
                                     <table class="table table-striped" width="auto" >
 
-                                        <thead border="1">
+                                        <thead boarder="1">
                                             <tr>
                                                 <th>작동기</th>
-                                                <th>퇴치기Seq</th>
+                                                <th>퇴치기번호</th>
                                                 <th>작동여부</th>
                                                 <th>작동일시</th>
                                                 <th>Control</th>
@@ -460,7 +469,7 @@ select {
                                 <div class="header">
                                     <h2 class="titleee">전체시스템 수동제어 </h2>
                                     
-                                    <p class="category">Manual ON/OFF</p>
+                                    <p class="category">Manual ON/OFF</p> <br>
                                     <label class="switch" height="15px">
                                         <input type="checkbox">
                                         <span class="slider round"></span>
@@ -470,7 +479,7 @@ select {
                                     
                                     
                                         <p></br></p>
-                                            <div class="slideshow-container" ">
+                                            <div class="slideshow-container" >
                                             
                                                 <div class="mySlides">
                                                     <div class="numbertext">1 / 4</div>
@@ -536,6 +545,7 @@ select {
                                             <hr>
                                             <div class="stats">
                                             <h2 class="titleee"> 카메라 개별 제어 </h2>
+                                            <p class="category">Camera individual control</p><br>
                                             </div>
                                         </div>
                                 <label class="switch">
