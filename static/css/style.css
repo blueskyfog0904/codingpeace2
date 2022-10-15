@@ -148,8 +148,8 @@ h6,
 /*** Navbar ***/
 .navbar-light .navbar-nav .nav-link {
     position: relative;
-    margin-right: 30px;
-    padding: 40px 0;
+    margin-right: 60px;
+    padding: 40px ;
     font-family: 'Jost', sans-serif;
     font-size: 20px;
     font-weight: bold;
