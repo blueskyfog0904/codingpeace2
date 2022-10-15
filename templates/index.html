@@ -113,10 +113,15 @@ gif 사각 라운드로 바꿈 */
                             <br>
                             <br>
                         
+
+
+
+                            {% if not session['user_id']: %}
                             <!-- <p class="text-white pb-3 animated slideInDown">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p> -->
                             <a href="./join" class="test btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInLeft">
                                 Sign Up</a>
                             <a href="./login" class="test btn btn-secondary-gradient py-sm-3 px-4 px-sm-5 rounded-pill animated slideInRight">Sign In</a>
+                            {% endif%}
                         </div>
 
 
