@@ -141,7 +141,7 @@ select {
             border-radius: 50%;
         }
 
-        p1 {
+        .p1 {
             margin: 0px;
             display: inline-block;
             font-size: 15px;
@@ -150,7 +150,7 @@ select {
 
         img {
             width: 90px;
-            height: 90px;
+            /* height: 90px; */
         }
 
         .view,
@@ -238,9 +238,9 @@ select {
         transition: background-color 0.6s ease;
     }
 
-    .active {
+    /* .active {
         background-color: #717171;
-    }
+    } */
 
     /* Fading animation */
     .fade {
@@ -296,40 +296,40 @@ select {
                     <li class="active">
                         <a href="/dashboard">
                             <i class="ti-panel"></i>
-                            <p>Dashboard</p>
+                            <p>실시간 서비스</p>
                         </a>
                     </li>
                     <li>
                         <a href="/Record_Check">
                             <i class="ti-user"></i>
-                            <p>Record Check</p>
+                            <p>출현기록자료</p>
                         </a>
                     </li>
                     <li>
                         <a href="/Graph_LIst">
                             <i class="ti-view-list-alt"></i>
-                            <p>Graph List</p>
+                            <p>세부자료</p>
                         </a>
                     </li>
                  
                     <li>
                         <a href="/maps">
                             <i class="ti-map"></i>
-                            <p>Maps</p>
+                            <p>출현위치자료</p>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="/notifications">
                             <i class="ti-bell"></i>
                             <p>Notifications</p>
                         </a>
-                    </li>
-                    <li class="active-pro">
+                    </li> -->
+                    <!-- <li class="active-pro">
                         <a href="upgrade.html">
                             <i class="ti-export"></i>
                             <p>Upgrade to PRO</p>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -337,6 +337,14 @@ select {
         <div class="main-panel">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
+
+                 <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                 <span class="test_1" style="margin-left: 76%;">  
+                    {% if session['user_id']%}  {{session['user_id']}} 님 
+                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                    {% endif %}   
+                 </span>
+
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle">
                             <span class="sr-only">Toggle navigation</span>
@@ -344,7 +352,7 @@ select {
                             <span class="icon-bar bar2"></span>
                             <span class="icon-bar bar3"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Dashboard</a>
+                        <a class="navbar-brand" href="#">실시간 서비스</a>
                     </div>
                     <div class="collapse navbar-collapse">
   
@@ -363,6 +371,7 @@ select {
                             <div class="card">
                                 <div class="header">
                                     <h2 class="titleee"> 실시간 영상 </h2>
+                                    <p class="category">24hour live video</p><br>
                                 <label class="switch">카메라 선택:</label>
                                 
                                 <select name="pets" id="pet-select">
@@ -400,10 +409,10 @@ select {
                                 <div class="content">
                                     <table class="table table-striped" width="auto" >
 
-                                        <thead border="1">
+                                        <thead boarder="1">
                                             <tr>
                                                 <th>작동기</th>
-                                                <th>퇴치기Seq</th>
+                                                <th>퇴치기번호</th>
                                                 <th>작동여부</th>
                                                 <th>작동일시</th>
                                                 <th>Control</th>
@@ -460,7 +469,7 @@ select {
                                 <div class="header">
                                     <h2 class="titleee">전체시스템 수동제어 </h2>
                                     
-                                    <p class="category">Manual ON/OFF</p>
+                                    <p class="category">Manual ON/OFF</p> <br>
                                     <label class="switch" height="15px">
                                         <input type="checkbox">
                                         <span class="slider round"></span>
@@ -470,7 +479,7 @@ select {
                                     
                                     
                                         <p></br></p>
-                                            <div class="slideshow-container" ">
+                                            <div class="slideshow-container" >
                                             
                                                 <div class="mySlides">
                                                     <div class="numbertext">1 / 4</div>
@@ -536,6 +545,54 @@ select {
                                             <hr>
                                             <div class="stats">
                                             <h2 class="titleee"> 카메라 개별 제어 </h2>
+                                            <p class="category">Camera individual control</p><br>
+                                                    <!-- 표추가 -->
+                                                    <div class="content">
+                                                        <table class="table table-striped" width="auto" >
+                    
+                                                            <thead boarder="1">
+                                                                <tr>
+                                                                    <th>작동기</th>
+                                                                    <th>제어</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                    
+                                                                {% for i in result %}
+                                                                <tr>
+                                                                    <td>
+                                                                        {%if i.kick_seq == 1%}
+                                                                        <img src="/static/img/device1.png" alt="img">
+                                                                        {%elif i.kick_seq ==2%}
+                                                                        <img src="/static/img/device2.png" alt="img">
+                                                                        {%else%}
+                                                                        <img src="/static/img/device3.png" alt="img">
+                                                                        {%endif%}
+                                                                    </td>
+                    
+                                                                    <td>{{i.kick_seq}}</td>
+                                                                    {% if i.kick_if_run=='Y':%}
+                                                                        <td><button class="view">Yes</button></td>
+                                                                    {%elif i.kick_if_run=='N':%}
+                                                                        <td><button class="delete2">No</button></td>
+                                                                    {%endif%}
+                    
+                                                                    <td>{{i.kick_if_date}}</td>
+                                                                    {% if result.index(i)%2== 0%}
+                                                                    <td rowspan="2">
+                                                                        <button class="delete">Video</button>
+                                                                    </td>
+                                                                    {%endif%}
+                                                                </tr>{%endfor%}
+                                                            </tbody>
+                                                            <tfoot>
+                                                                <td colspan="5" class="tablefoot"></td>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
+
+
+
                                             </div>
                                         </div>
                                 <label class="switch">
@@ -558,7 +615,7 @@ select {
     </div>
 
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul>
@@ -583,7 +640,7 @@ select {
 
         </div>
         </div>
-    </footer>
+    </footer> -->
 
     </div>
     </div>
@@ -716,13 +773,13 @@ select {
 </script>
 
 
-<div>
+<!-- <div>
     <img id="logo" src="">
     <script>document.getElementById('logo').src = logo_info()</script>
 
     <img id="title" src="">
     <script>document.getElementById('title').src = title_info()</script>
-</div>
+</div> -->
 
 
 

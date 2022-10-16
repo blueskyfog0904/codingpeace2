@@ -70,20 +70,20 @@
                         <!-- <li class="active"> -->
                         <a href="/dashboard">
                             <i class="ti-panel"></i>
-                            <p>Dashboard</p>
+                            <p>실시간 서비스</p>
                         </a>
                     </li>
                     <li>
                         <li class="active">
                         <a href="/Record_Check">
                             <i class="ti-user"></i>
-                            <p>Record Check</p>
+                            <p>출현기록자료</p>
                         </a>
                     </li>
                     <li>
                         <a href="/Graph_LIst">
                             <i class="ti-view-list-alt"></i>
-                            <p>Graph List</p>
+                            <p>세부자료</p>
                         </a>
                     </li>
                     <!-- 필요없는 html 주석처리 -->
@@ -102,7 +102,7 @@
                     <li>
                         <a href="/maps">
                             <i class="ti-map"></i>
-                            <p>Maps</p>
+                            <p>출현위치자료</p>
                         </a>
                     </li>
                     <!-- 필요없는 메뉴 주석처리 -->
@@ -141,7 +141,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button> 
-                    <a class="navbar-brand" href="#">Record Check</a>
+                    <a class="navbar-brand" href="#">출현기록 자료</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     
@@ -293,7 +293,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">포착 사진</h4>
+                                <h2 class="titleee">포착 사진</h2>
                                 <p class="category">Catch the animail</p>
                             <div class="content">
                             <img  id="catchimg" calss ="img_1" src="/static/img/s12.png" alt="No image" width="40%" >
@@ -320,7 +320,7 @@
                     <div class="col-md-6" >  
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">출현기록 그래프</h4>
+                                <h2 class="titleee">출현기록 그래프</h2>
                                 <p class="category">Appearance record Graph</p>
                             </div>
                             <div class="content">
@@ -357,8 +357,8 @@
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">출현기록 데이터</h4>
-                                <p class="category">Appearance record data</p>
+                                <h2 class="titleee">출현기록 데이터</h2>
+                                <p class="category">Appearance record data</p><br>
                                 <form action="/Record_Check" method="GET" onsubmit="return false;">
                                     <input type="date" name = "date1" id="input_date1">
                                     <span class="validity"></span>
@@ -438,7 +438,7 @@
         </div>
 
 
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -464,7 +464,7 @@
                     &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
                 </div>
             </div>
-        </footer>
+        </footer> -->
 
     </div>
 </div>
