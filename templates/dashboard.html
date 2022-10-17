@@ -49,6 +49,17 @@
 <!-- 케이크끝 -->
     <style>
 
+        div.camleft{
+             width: 50%;
+        float: left;
+       
+        }
+         div.camright{
+     width: 50%;
+        float: right;
+        }
+
+
 select {
     width:300px;
     height:30px;
@@ -543,8 +554,8 @@ select {
 
                                         <div class="footer">
                                             <hr>
-                                            <div class="stats">
-                                            <h2 class="titleee"> 카메라 개별 제어 </h2>
+                                            <div class="stats camleft">
+                                            <h2 class="titleee "> 카메라 개별현황 </h2>
                                             <img src="/static/img/cam1.jfif">
                                             <p class="category">Camera individual control</p><br>
                                                     <!-- 표추가 -->
@@ -569,30 +580,20 @@ select {
                                                                     {%else%}
                                                                         <td><button class="view">On</button></td>
                                                                     {%endif%}
-                                                                  
-                                                                    <td>
-                                                                        
-                                                                    <label class="switch" >
-                                                                        <input type="checkbox" id="cam">
-                                                                        <span class="slider round"></span>
-                                                                    </label>
-                                                                    <p1>OFF</p1>
-                                                                    <p1 style="display:none;">ON</p1>
-                                                                    
-                                                                    </td>
-                                                                 
-
                                                                 </tr>{%endfor%}
-                                                         
                                                             </tbody>
+                                                          
                                                             <tfoot>
                                                                 <td colspan="5" class="tablefoot"></td>
                                                             </tfoot>
                                                         </table>
                                                     </div>
+                                                    
 
 
-
+                                            </div>
+                                            <div class="camright">
+                                                <img src="/static/img/시스템예시.png" alt="" width="100%">
                                             </div>
                                         </div>
                              
