@@ -32,49 +32,49 @@
     <link href="/static/css/themify-icons.css" rel="stylesheet">
 
 
-    	<meta content="charset=utf-8">
-	<title>FlexSlider 2</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="charset=utf-8">
+    <title>FlexSlider 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-  <!-- Syntax Highlighter -->
-  <link href="css/shCore.css" rel="stylesheet" type="text/css" />
-  <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-  <!-- Demo CSS -->
-	<link rel="stylesheet" href="css/demo.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="../flexslider.css" type="text/css" media="screen" />
+    <!-- Syntax Highlighter -->
+    <link href="css/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="css/demo.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../flexslider.css" type="text/css" media="screen" />
 
-	<!-- Modernizr -->
-  <script src="js/modernizr.js"></script>
-<!-- 케이크 -->
-<!-- 케이크끝 -->
+    <!-- Modernizr -->
+    <script src="js/modernizr.js"></script>
+    <!-- 케이크 -->
+    <!-- 케이크끝 -->
     <style>
+        div.camleft {
+            width: 50%;
+            float: left;
 
-        div.camleft{
-             width: 50%;
-        float: left;
-       
-        }
-         div.camright{
-     width: 50%;
-        float: right;
         }
 
-
-select {
-    width:300px;
-    height:30px;
-    font-size: .9rem;
-    padding: 2px 5px;
-}
-  
+        div.camright {
+            width: 50%;
+            float: right;
+        }
 
 
-   .titleee{
-    font-family: 'SLEIGothicTTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    } 
+        select {
+            width: 300px;
+            height: 30px;
+            font-size: .9rem;
+            padding: 2px 5px;
+        }
+
+
+
+        .titleee {
+            font-family: 'SLEIGothicTTF';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SLEIGothicTTF.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
 
 
@@ -171,12 +171,14 @@ select {
             color: #fff;
             font-weight: bold;
         }
-         .delete{
+
+        .delete {
             border: none;
             padding: 5px 10px;
             color: #fff;
             font-weight: bold;
         }
+
         .view {
             background-color: #03A9F4;
         }
@@ -184,113 +186,111 @@ select {
         .delete2 {
             background-color: #a1a1a1;
         }
-        
+
         .delete {
             background-color: #E91E63;
         }
 
-    * {
-        box-sizing: border-box;
-    }
-    .simg{
-       
-       height:100vh;
-       width: 100vw;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-   
-    body {
-        font-family: Verdana, sans-serif;
-    }
+        .simg {
 
-    .mySlides {
-        display: none;
-    }
+            height: 100vh;
+            width: 100vw;
+        }
 
-    img {
-        vertical-align: middle;
-    }
 
-    /* Slideshow container */
-    .slideshow-container {
-        max-width: 1000px;
-        position: relative;
-        margin: auto;
-    }
+        body {
+            font-family: Verdana, sans-serif;
+        }
 
-    /* Caption text */
-    .text {
-        color: #f2f2f2;
-        font-size: 15px;
-        padding: 8px 12px;
-        position: absolute;
-        bottom: 8px;
-        width: 100%;
-        text-align: center;
-    }
+        .mySlides {
+            display: none;
+        }
 
-    /* Number text (1/3 etc) */
-    .numbertext {
-        color: #f2f2f2;
-        font-size: 12px;
-        padding: 8px 12px;
-        position: absolute;
-        top: 0;
-    }
+        img {
+            vertical-align: middle;
+        }
 
-    /* The dots/bullets/indicators */
-    .dot {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-    }
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
 
-    /* .active {
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        /* .active {
         background-color: #717171;
     } */
 
-    /* Fading animation */
-    .fade {
-        -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-
-    @-webkit-keyframes fade {
-        from {
-            opacity: .4
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
         }
 
-        to {
-            opacity: 1
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
         }
-    }
 
-    @keyframes fade {
-        from {
-            opacity: .4
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
         }
 
-        to {
-            opacity: 1
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+            .text {
+                font-size: 11px
+            }
         }
-    }
-
-    /* On smaller screens, decrease text size */
-    @media only screen and (max-width: 300px) {
-        .text {
-            font-size: 11px
-        }
-    }
-
-
-    
-</style>
+    </style>
 </head>
 
 <body>
@@ -325,7 +325,7 @@ select {
                             <p>세부자료</p>
                         </a>
                     </li>
-                 
+
                     <li>
                         <a href="/maps">
                             <i class="ti-map"></i>
@@ -352,12 +352,13 @@ select {
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
 
-                 <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
-                 <span class="test_1" style="margin-left: 76%;">  
-                    {% if session['user_id']%}  {{session['user_id']}} 님 
-                    <a href="/logout"  class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
-                    {% endif %}   
-                 </span>
+                    <!-- 사용자 이름 로그아웃 버튼 span 테그에 담아 오른쪽으로 움직임. -->
+                    <span class="test_1" style="margin-left: 76%;">
+                        {% if session['user_id']%} {{session['user_id']}} 님
+                        <a href="/logout"
+                            class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Log_out</a>
+                        {% endif %}
+                    </span>
 
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle">
@@ -369,7 +370,7 @@ select {
                         <a class="navbar-brand" href="#">실시간 서비스</a>
                     </div>
                     <div class="collapse navbar-collapse">
-  
+
 
                     </div>
                 </div>
@@ -386,39 +387,41 @@ select {
                                 <div class="header">
                                     <h2 class="titleee"> 실시간 영상 </h2>
                                     <p class="category">24hour live video</p><br>
-                                <label class="switch">카메라 선택:</label>
-                                
-                                <select name="pets" id="pet-select">
-                                    <option value="" font-size:20pt>--Please choose an option--</option>
-                                    {% for i in result[1]%}
-                                    <option value="{{i.cam_sn}}" font-size:20pt>{{i.cam_sn}}</option>
-                                    {%endfor%}
-                                </select>
-                                  
+                                    <label class="switch">카메라 선택:</label>
+
+                                    <select name="selectBox" id="selectBox">
+                                        <option value="" font-size:20pt>--Please choose an option--</option>
+                                        {% for i in result[1]%}
+                                        <option value="{{i.cam_sn}}" font-size:20pt">{{i.cam_sn}}</option>
+                                        {%endfor%}
+                                    </select>
+
                                 </div>
 
-                                    <div class="content">
+                                <div class="content">
                                     <!-- 이미지 크기 설정 -->
                                     <video id="video" muted autoplay loop width="40%">
-                                        <source src="./static/img/home.mp4" type="video/mp4">
-                                        <strong>Your browser does not support the video tag.</strong>
+                                        <source id="source" src="/static/video/test1.mp4" type="video/mp4">
+                                        <!-- <strong>Your browser does not support the video tag.</strong> -->
                                     </video>
-                                    <button class="delete" id="ontime" onclick="onDisplay()">실시간 연결</button>                                   
+                                    <!-- <button class="delete" id="ontime" onclick="onDisplay()">실시간 연결</button> -->
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="header">
-                                    <h2 class="titleee" > 실시간 퇴치기 작동 현황 </h2>
+                                    <h2 class="titleee"> 실시간 퇴치기 작동 현황 </h2>
                                     <p class="category" id="devRecord">Machine working state</p>
                                 </div>
                                 <div class="content">
-                                    <table class="table table-striped" width="auto" >
+                                    <table class="table table-striped" width="auto">
 
                                         <thead boarder="1">
                                             <tr>
@@ -445,9 +448,9 @@ select {
 
                                                 <td>{{i.kick_seq}}</td>
                                                 {% if i.kick_if_run=='Y':%}
-                                                    <td><button class="view">Yes</button></td>
+                                                <td><button class="view">Yes</button></td>
                                                 {%elif i.kick_if_run=='N':%}
-                                                    <td><button class="delete2">No</button></td>
+                                                <td><button class="delete2">No</button></td>
                                                 {%endif%}
 
                                                 <td>{{i.kick_if_date}}</td>
@@ -463,14 +466,14 @@ select {
                                         </tfoot>
                                     </table>
                                 </div>
-                               
+
                                 <div>
-                         
+
                                 </div>
 
 
 
-                         
+
                             </div>
                         </div>
 
@@ -479,7 +482,7 @@ select {
                             <div class="card " width="50%">
                                 <div class="header">
                                     <h2 class="titleee">전체시스템 수동제어 </h2>
-                                    
+
                                     <p class="category">Manual ON/OFF</p> <br>
                                     <label class="switch" height="15px">
                                         <input id="camcheck" type="checkbox">
@@ -487,125 +490,123 @@ select {
                                     </label>
                                     <p2>On</p2>
                                     <p2 style="display:none;">Off</p2>
-                                    
-                                    
-                                        <p></br></p>
-                                            <div class="slideshow-container" >
-                                            
-                                                <div class="mySlides">
-                                                    <div class="numbertext">1 / 4</div>
-                                                    <img class="simg" src="/static/img/s11.png"  style="width: 100%; height:500px; min-width: 140px;">
-                                                </div>
-                                            
-                                                <div class="mySlides">
-                                                    <div class="numbertext">2 / 4</div>
-                                                    <img  class="simg" src="/static/img/s12.png"  style="width: 100%; height:500px; min-width: 140px;">
-                                                </div>
-                                            
-                                                <div class="mySlides">
-                                                    <div class="numbertext">3 / 4</div>
-                                                    <img  class="simg" src="/static/img/s13.png"  style="width: 100%; height:500px; min-width: 140px;">
-                                                </div>
 
-                                                <div class="mySlides">
-                                                    <div class="numbertext">4 / 4</div>
-                                                    <img  class="simg" src="/static/img/s14.png"  style="width: 100%; height:500px; min-width: 140px;">
-                                                </div>
-                                            
-                                            
-                                            </div>
-                                            <br>
-                                            
-                                            <div style="text-align:center">
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
 
-                                            </div>
-                                            
-                                            <script>
-                                                var slideIndex = 0;
-                                                showSlides();
+                                    <p></br></p>
+                                    <div class="slideshow-container">
 
-                                                function showSlides() {
-                                                    var i;
-                                                    var slides = document.getElementsByClassName("mySlides");
-                                                    var dots = document.getElementsByClassName("dot");
-                                                    for (i = 0; i < slides.length; i++) {
-                                                        slides[i].style.display = "none";
-                                                    }
-                                                    slideIndex++;
-                                                    if (slideIndex > slides.length) { slideIndex = 1 }
-                                                    for (i = 0; i < dots.length; i++) {
-                                                        dots[i].className = dots[i].className.replace(" active", "");
-                                                    }
-                                                    slides[slideIndex - 1].style.display = "block";
-                                                    dots[slideIndex - 1].className += " active";
-                                                    setTimeout(showSlides, 2000); // Change image every 2 seconds
-                                                }
-                                            </script>
-                                        <p></br></p>
-                                        <p></br></p>
+                                        <div class="mySlides">
+                                            <div class="numbertext">1 / 4</div>
+                                            <img class="simg" src="/static/img/s11.png"
+                                                style="width: 100%; height:500px; min-width: 140px;">
+                                        </div>
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">2 / 4</div>
+                                            <img class="simg" src="/static/img/s12.png"
+                                                style="width: 100%; height:500px; min-width: 140px;">
+                                        </div>
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">3 / 4</div>
+                                            <img class="simg" src="/static/img/s13.png"
+                                                style="width: 100%; height:500px; min-width: 140px;">
+                                        </div>
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">4 / 4</div>
+                                            <img class="simg" src="/static/img/s14.png"
+                                                style="width: 100%; height:500px; min-width: 140px;">
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+
+                                    <div style="text-align:center">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+
+                                    </div>
+
+                                    <script>
+                                        var slideIndex = 0;
+                                        showSlides();
+
+                                        function showSlides() {
+                                            var i;
+                                            var slides = document.getElementsByClassName("mySlides");
+                                            var dots = document.getElementsByClassName("dot");
+                                            for (i = 0; i < slides.length; i++) {
+                                                slides[i].style.display = "none";
+                                            }
+                                            slideIndex++;
+                                            if (slideIndex > slides.length) { slideIndex = 1 }
+                                            for (i = 0; i < dots.length; i++) {
+                                                dots[i].className = dots[i].className.replace(" active", "");
+                                            }
+                                            slides[slideIndex - 1].style.display = "block";
+                                            dots[slideIndex - 1].className += " active";
+                                            setTimeout(showSlides, 2000); // Change image every 2 seconds
+                                        }
+                                    </script>
+                                    <p></br></p>
+                                    <p></br></p>
                                 </div>
                                 <div class="content">
+                                </div>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats camleft">
+                                        <h2 class="titleee "> 카메라 개별현황 </h2>
+                                        <img src="/static/img/cam.png">
+                                        <p class=<div class="content">
+                                        <table class="table table-striped" width="auto">
 
-                                
+                                            <thead boarder="1">
+                                                <tr>
+                                                    <th>Serial Num</th>
+                                                    <th>등록번호</th>
+                                                    <th>작동여부</th>
 
-                                        <div class="footer">
-                                            <hr>
-                                            <div class="stats camleft">
-                                            <h2 class="titleee "> 카메라 개별현황 </h2>
-                                            <img src="/static/img/cam1.jfif">
-                                            <p class=
-                                                    <div class="content">
-                                                        <table class="table table-striped" width="auto" >
-                    
-                                                            <thead boarder="1">
-                                                                <tr>
-                                                                    <th>Serial Num</th>
-                                                                    <th>작동여부</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                    
-                                                                {% for i in result[1] %}
-                                                                <tr>
-                                                                    <td>{{i.cam_sn}}</td>
+                                                {% for i in result[1] %}
+                                                <tr>
+                                                    <td>{{i.cam_sn}}</td>
+                                                    <td>{{i.cam_seq}}</td>
+                                                    {% if i.cam_conn=='Y':%}
+                                                    <td><button class="view">On</button></td>
+                                                    {%else%}
+                                                    <td><button class="delete2">off</button></td>
+                                                    {%endif%}
+                                                </tr>{%endfor%}
+                                            </tbody>
 
-                                                                    {% if i.cam_seq=='Y':%}
-                                                                        <td><button class="delete2">Off</button></td>
-                                                                    {%else%}
-                                                                        <td><button class="view">On</button></td>
-                                                                    {%endif%}
-                                                                </tr>{%endfor%}
-                                                            </tbody>
-                                                          
-                                                            <tfoot>
-                                                                <td colspan="5" class="tablefoot"></td>
-                                                            </tfoot>
-                                                        </table>
-                                                    </div>
-                                            </div>
-                                            <div class="camright">
-                                                <img src="/static/img/시스템예시.png" alt="" class = "img2">
-                                            </div>
-                                        </div>
-                             
-                                        
-
-                                <p></br></p>
-                                <p></br></p>
-                                <p></br></p>
-                                <p></br></p>
-                                <p></br></p>
+                                            <tfoot>
+                                                <td colspan="5" class="tablefoot"></td>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
+
+
+                            <p></br></p>
+                            <p></br></p>
+                            <p></br></p>
+                            <p></br></p>
+                            <p></br></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     </div>
@@ -613,47 +614,6 @@ select {
 
 
 </body>
-
-<script>
-    let onDisplay = () => {
-
-        if (document.getElementById('ontime').innerText == '연결종료') {
-            $('#video').hide()
-            $('#ontime').text('실시간 연결')
-        } else {
-            $('#video').show()
-            $('#video').after('<br>')
-            $('#ontime').html('연결종료')
-        }
-
-    }
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#cam').prop('checked',true);
-        $('input:checkbox[name="cam"]')
-       if( $('#cam').is(':checked')){
-            alert('hi')
-       }
-    });
-</script>
-
-
-<script>
-    let onDisplay = () => {
-        if (document.getElementById('ontime').innerText == '연결종료') {
-            $('#video').hide()
-            $('#ontime').text('실시간 연결')
-        } else {
-            $('#video').show()
-            $('#video').after('<br>')
-            $('#ontime').html('연결종료')
-        }
-
-    }
-</script>
-
 
 
 <!-- $('#devRecord').text('퇴치기 seq00번 작동중') -->
@@ -697,6 +657,31 @@ select {
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/static/js/demo.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#selectBox').change(function () {
+            var result = $(this).val();
+            var $source = $('#source')[0]
+            console.log(result == "op748");
+            console.log($source.getAttribute("src"));
+
+            var $video = $("#video")
+
+            if(result == "op748"){
+                $source.setAttribute("src", "/static/video/test1.mp4")
+            }else if(result == "op248"){
+                $source.setAttribute("src", "/static/video/test2.mp4")
+            }else if(result == "op123"){
+                $source.setAttribute("src", "/static/video/test3.mp4")
+            }
+
+            $video.show();
+            $video.load();
+            $video.play();
+
+        });
+    });
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -714,6 +699,43 @@ select {
         // });
 
     });
+</script>
+<script>
+    let onDisplay = () => {
+
+        if (document.getElementById('ontime').innerText == '연결종료') {
+            $('#video').hide()
+            $('#ontime').text('실시간 연결')
+        } else {
+            $('#video').show()
+            $('#video').after('<br>')
+            $('#ontime').html('연결종료')
+        }
+
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#cam').prop('checked', true);
+        $('input:checkbox[name="cam"]')
+        if ($('#cam').is(':checked')) {
+            alert('hi')
+        }
+    });
+</script>
+<script>
+    $("selectBox").chagne(function () {
+        var camvalue1 = $('option:selected, this').text();
+
+        if (camvalue1 == "op748") {
+            $("#source").attr("src", "");
+        }
+    })
+
+
+
+
 </script>
 
 
