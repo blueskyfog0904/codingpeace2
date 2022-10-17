@@ -376,9 +376,9 @@ select {
                                 
                                 <select name="pets" id="pet-select">
                                     <option value="" font-size:20pt>--Please choose an option--</option>
-                                    <option value="op123" font-size:20pt>op123</option>
-                                    <option value="op215" font-size:20pt>op215</option>
-                                    <option value="op748" font-size:20pt>op748</option>
+                                    {% for i in result[1]%}
+                                    <option value="{{i.cam_sn}}" font-size:20pt>{{i.cam_sn}}</option>
+                                    {%endfor%}
                                 </select>
                                   
                                 </div>
@@ -420,7 +420,7 @@ select {
                                         </thead>
                                         <tbody>
 
-                                            {% for i in result %}
+                                            {% for i in result[0] %}
                                             <tr>
                                                 <td>
                                                     {%if i.kick_seq == 1%}
@@ -440,7 +440,7 @@ select {
                                                 {%endif%}
 
                                                 <td>{{i.kick_if_date}}</td>
-                                                {% if result.index(i)%2== 0%}
+                                                {% if result[0].index(i)%2== 0%}
                                                 <td rowspan="2">
                                                     <button class="delete">Video</button>
                                                 </td>
@@ -471,11 +471,11 @@ select {
                                     
                                     <p class="category">Manual ON/OFF</p> <br>
                                     <label class="switch" height="15px">
-                                        <input type="checkbox">
+                                        <input id="camcheck" type="checkbox">
                                         <span class="slider round"></span>
                                     </label>
-                                    <p1>OFF</p1>
-                                    <p1 style="display:none;">ON</p1>
+                                    <p2>On</p2>
+                                    <p2 style="display:none;">Off</p2>
                                     
                                     
                                         <p></br></p>
@@ -545,6 +545,7 @@ select {
                                             <hr>
                                             <div class="stats">
                                             <h2 class="titleee"> 카메라 개별 제어 </h2>
+                                            <img src="/static/img/cam1.jfif">
                                             <p class="category">Camera individual control</p><br>
                                                     <!-- 표추가 -->
                                                     <div class="content">
@@ -552,38 +553,37 @@ select {
                     
                                                             <thead boarder="1">
                                                                 <tr>
-                                                                    <th>작동기</th>
-                                                                    <th>제어</th>
+                                                                    <th>Serial Num</th>
+                                                                    <th>작동여부</th>
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                     
-                                                                {% for i in result %}
+                                                                {% for i in result[1] %}
                                                                 <tr>
+                                                                    <td>{{i.cam_sn}}</td>
+
+                                                                    {% if i.cam_seq=='Y':%}
+                                                                        <td><button class="delete2">Off</button></td>
+                                                                    {%else%}
+                                                                        <td><button class="view">On</button></td>
+                                                                    {%endif%}
+                                                                  
                                                                     <td>
-                                                                        {%if i.kick_seq == 1%}
-                                                                        <img src="/static/img/device1.png" alt="img">
-                                                                        {%elif i.kick_seq ==2%}
-                                                                        <img src="/static/img/device2.png" alt="img">
-                                                                        {%else%}
-                                                                        <img src="/static/img/device3.png" alt="img">
-                                                                        {%endif%}
+                                                                        
+                                                                    <label class="switch" >
+                                                                        <input type="checkbox" id="cam">
+                                                                        <span class="slider round"></span>
+                                                                    </label>
+                                                                    <p1>OFF</p1>
+                                                                    <p1 style="display:none;">ON</p1>
+                                                                    
                                                                     </td>
-                    
-                                                                    <td>{{i.kick_seq}}</td>
-                                                                    {% if i.kick_if_run=='Y':%}
-                                                                        <td><button class="view">Yes</button></td>
-                                                                    {%elif i.kick_if_run=='N':%}
-                                                                        <td><button class="delete2">No</button></td>
-                                                                    {%endif%}
-                    
-                                                                    <td>{{i.kick_if_date}}</td>
-                                                                    {% if result.index(i)%2== 0%}
-                                                                    <td rowspan="2">
-                                                                        <button class="delete">Video</button>
-                                                                    </td>
-                                                                    {%endif%}
+                                                                 
+
                                                                 </tr>{%endfor%}
+                                                         
                                                             </tbody>
                                                             <tfoot>
                                                                 <td colspan="5" class="tablefoot"></td>
@@ -595,12 +595,7 @@ select {
 
                                             </div>
                                         </div>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider round"></span>
-                                </label>
-                                <p1>OFF</p1>
-                                <p1 style="display:none;">ON</p1>
+                             
                                 <p></br></p>
                                 <p></br></p>
                                 <p></br></p>
@@ -614,34 +609,6 @@ select {
         </div>
     </div>
 
-
-    <!-- <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul>
-
-                    <li>
-                        <a href="http://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-        </div>
-        </div>
-    </footer> -->
-
     </div>
     </div>
 
@@ -649,16 +616,33 @@ select {
 </body>
 
 <script>
-    // $(document).on('click', '#ontime', ()=>{
-    //     $('#ontime').text('연결종료')    
-    //     $('#video').show()        
-    //     $('#ontime').attr('id', 'offtime')
-
-    // })
-
-
     let onDisplay = () => {
 
+        if (document.getElementById('ontime').innerText == '연결종료') {
+            $('#video').hide()
+            $('#ontime').text('실시간 연결')
+        } else {
+            $('#video').show()
+            $('#video').after('<br>')
+            $('#ontime').html('연결종료')
+        }
+
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#cam').prop('checked',true);
+        $('input:checkbox[name="cam"]')
+       if( $('#cam').is(':checked')){
+            alert('hi')
+       }
+    });
+</script>
+
+
+<script>
+    let onDisplay = () => {
         if (document.getElementById('ontime').innerText == '연결종료') {
             $('#video').hide()
             $('#ontime').text('실시간 연결')
