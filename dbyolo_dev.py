@@ -88,5 +88,33 @@ def search(): # 아이디 넘겨줘야함
     conn.close()
 #     print(result)
     return result
-            
   
+  
+ 
+
+def mycamera(): #영상기록중에만 작동
+    conn = cx_Oracle.connect('final_ai4', 'smhrd4', 'project-db-stu.ddns.net:1524/xe', encoding="UTF-8", nencoding="UTF-8")
+
+    id=session['user_id']
+    result=[]
+    cursor = conn.cursor()
+    sql = f"select * from cam where user_id='{id}'"
+    cursor.execute(sql)
+    data=cursor.fetchall()
+    for i in data:
+                result.append(
+                    {
+                        "user_id":i[0],
+                        "cam_conn": i[1],
+                        "cam_seq":i[2],
+                        "cam_model":i[3],
+                        "cam_name":i[4],
+                        "cam_ip":i[5],
+                        "cam_sn" : i[6]
+                    }
+                )
+           
+    cursor.close()
+    conn.commit()
+    conn.close()  
+    return result;

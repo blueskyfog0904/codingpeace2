@@ -65,7 +65,11 @@ def e404():
 def devtest():
     if request.method=='GET':
         result=dbyolo_dev.search()
-        return render_template('dashboard.html',result = result)
+        result2=dbyolo_dev.mycamera()
+        total=[result,result2]
+        # return render_template('dashboard.html',result = result)
+        return render_template('dashboard.html',result = total)
+    
 
 @app.route('/Record_Check',methods=['POST','GET'])
 def Record_Check(): 
