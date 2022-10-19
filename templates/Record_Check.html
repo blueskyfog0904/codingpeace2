@@ -296,7 +296,7 @@
                                 <h2 class="titleee">포착 사진</h2>
                                 <p class="category">Catch the animail</p>
                             <div class="content">
-                            <img  id="catchimg" calss ="img_1" src="/static/img/s12.png" alt="No image" width="40%" >
+                            <img  id="catchimg" class ="img_1" src="/static/img/s11.png"  width="40%" style="display:none">
                             </div>
                             <!-- 기존그래프 주석처리 -->
                             <!-- <div class="content">
@@ -509,7 +509,7 @@
                         </tr>
                         `
                     }
-
+                    
                     $("table.table.table-striped > tbody").html(resultHTML);
 
                     let graph = "http://127.0.0.1:3000/perweek?day1="+wday1+"&day2="+wday2       
@@ -565,6 +565,18 @@
         const day2 = document.querySelector("#input_date2").value;       
 
     }
+
+        $(document).on("click", "tr", function(){
+            document.getElementById("catchimg").style.display="";
+        })
+            
+            
+        
+        
+        
+    
+        
+ 
 
     </script>
 
