@@ -429,7 +429,7 @@
                                                 <th>퇴치기번호</th>
                                                 <th>작동여부</th>
                                                 <th>작동일시</th>
-                                                <th>Control</th>
+                                                <th>녹화영상</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -439,6 +439,7 @@
                                                 <td>
                                                     {%if i.kick_seq == 1%}
                                                     <img src="/static/img/device1.png" alt="img">
+                                                    
                                                     {%elif i.kick_seq ==2%}
                                                     <img src="/static/img/device2.png" alt="img">
                                                     {%else%}
@@ -454,11 +455,20 @@
                                                 {%endif%}
 
                                                 <td>{{i.kick_if_date}}</td>
-                                                {% if result[0].index(i)%2== 0%}
-                                                <td rowspan="2">
-                                                    <button class="delete">Video</button>
-                                                </td>
+                                                
+                                                {%if i.kick_if_run=='N'%}
+                                                <td><button class="delete" 
+                                                    <button
+                                                    onclick="window.open('/showVid?name={{i.kick_if_vid}}', '녹화영상확인', 'width=430, height=500, location=no, status=no, scrollbars=yes');">
+                                                  
+                                                    Video</button></td>
+                                                
+                                                
+
+                                                
                                                 {%endif%}
+                                               
+                                               
                                             </tr>{%endfor%}
                                         </tbody>
                                         <tfoot>

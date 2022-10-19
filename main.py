@@ -24,6 +24,12 @@ def mainpage():
         print(f'메인에서 세션아이디는>> {id}')
     return render_template('index.html')
     
+ 
+ 
+@app.route('/showVid',methods=['POST','GET'])
+def showVid(): 
+    result=request.args.get("name")
+    return render_template('showVid.html',result =result)
     
 @app.route('/maps')
 def mapspage():
