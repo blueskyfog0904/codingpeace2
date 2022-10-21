@@ -459,7 +459,7 @@
                                                 {%if i.kick_if_run=='N'%}
                                                 <td><button class="delete" 
                                                     <button
-                                                    onclick="window.open('/showVid?name={{i.kick_if_vid}}', '녹화영상확인', 'width=430, height=500, location=no, status=no, scrollbars=yes');">
+                                                    onclick="window.open('/showVid?vid={{i.kick_if_vid}}&img={{i.kick_if_img}}', '녹화영상확인', 'width=800, height=500, location=no, status=no, scrollbars=yes');">
                                                   
                                                     Video</button></td>
                                                 
@@ -678,7 +678,10 @@
             var $video = $("#video")
 
             if(result == "op748"){
-                $source.setAttribute("src", "/static/video/test1.mp4")
+              //  $source.setAttribute("src", "/static/video/test1.mp4")
+                $source.setAttribute("src", "/static/video/final.mp4")
+              //  $source.setAttribute("src", "/static/detect/ex2/final.mp4")
+
             }else if(result == "op248"){
                 $source.setAttribute("src", "/static/video/test2.mp4")
             }else if(result == "op123"){

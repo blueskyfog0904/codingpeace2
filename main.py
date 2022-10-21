@@ -28,7 +28,9 @@ def mainpage():
  
 @app.route('/showVid',methods=['POST','GET'])
 def showVid(): 
-    result=request.args.get("name")
+    vid=request.args.get("vid")
+    img=request.args.get("img")
+    result=[vid,img]
     return render_template('showVid.html',result =result)
     
 @app.route('/maps')
